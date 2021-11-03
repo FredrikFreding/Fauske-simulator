@@ -1,6 +1,3 @@
-var money = 0;
-
-
 const bil_privatperson = [
     "Volvo 240",
     "BMW E30",
@@ -100,7 +97,7 @@ const random_fornavn = [
     "Benjamin"
 ];
 
-const random_fornavn = [
+const random_etternavn = [
     "Olavson",
     "Fredrikson",
     "Hansen",
@@ -128,3 +125,21 @@ const random_fornavn = [
     "Iversen",
     "Strand"
 ];
+
+const offentlige_personer = [
+    "Kongen",
+    "Bent Høie",
+    "Erna Solberg",
+    "Sjaman Durek",
+    "Ida Pinnerød",
+    "Trygve Vedum",
+    "Prinsen",
+    "MagneMaker",
+    "Raymond Andreassen"
+];
+
+
+const navn00f = Math.floor(Math.random() * random_fornavn.length);
+const navn00e = Math.floor(Math.random() * random_etternavn.length);
+
+var
