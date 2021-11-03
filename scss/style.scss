@@ -30,10 +30,8 @@
   .side-navbar {
     width: 250px;
     height: 100%;
-    position: fixed;
     margin-left: -300px;
     background-color: #100901;
-    transition: 0.5s;
   }
   
   .nav-link:active,
@@ -65,3 +63,16 @@
     border-radius: 2rem;
     padding: 2px 20px;
   }
+
+#info {
+  min-height: 100%;
+  padding-top: 5%;
+  background-image: url('../media/mafia.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#div-innpakning {
+  height: 1000px;
+}
