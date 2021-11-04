@@ -138,8 +138,10 @@ const offentlige_personer = [
     "Raymond Andreassen"
 ];
 
-
-const navn00f = Math.floor(Math.random() * random_fornavn.length);
-const navn00e = Math.floor(Math.random() * random_etternavn.length);
-
-var
+var randnavn = "";
+var navn00f = Math.floor(Math.random() * random_fornavn.length);
+var navn00e = Math.floor(Math.random() * random_etternavn.length);
+let navn01f = random_fornavn[navn00f];
+let navn01e = random_etternavn[navn00e];
+var randnavn = navn01f + " " + navn01e;
+console.log(randnavn);
