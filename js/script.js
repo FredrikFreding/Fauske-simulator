@@ -192,13 +192,19 @@ function randomran() {
     document.getElementById("ranoffer").innerHTML = "Offer:   " + randnavn;
     document.getElementById("sjanse").innerHTML = "Sjanse:   " + sjanse + "%";
     document.getElementById("penger_nivå").innerHTML = "Penger nivå:   " + peng_nivå;
+    document.getElementById("lagre").innerHTML = sjanse;
 }
 
 
 function våpen() {
-    våpen_sjanse = document.getElementById("sjanse");
-    våpen_sjanse + 30
+    var våpen_sjansje = 0;
+    var p = document.getElementById('lagre');
+    våpen_sjansje = p.textContent;
+    console.log(våpen_sjansje)
+    våpen_sjansje + 30;
     if (våpen_sjansje >= 100) {
         våpen_sjansje = 100;
     }
+    console.log(våpen_sjansje);
+    document.getElementById("sjanse").innerHTML = "Sjanse:   " + våpen_sjansje + "%";
 }
