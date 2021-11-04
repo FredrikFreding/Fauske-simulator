@@ -138,10 +138,38 @@ const offentlige_personer = [
     "Raymond Andreassen"
 ];
 
+const penger_nivå = [
+    "Veldig lavt",
+    "Lavt",
+    "Middels",
+    "Høyt",
+    "Veldig høyt",
+    "Ekstremt høyt"
+];
+
 var randnavn = "";
-var navn00f = Math.floor(Math.random() * random_fornavn.length);
-var navn00e = Math.floor(Math.random() * random_etternavn.length);
-let navn01f = random_fornavn[navn00f];
-let navn01e = random_etternavn[navn00e];
-var randnavn = navn01f + " " + navn01e;
-console.log(randnavn);
+var money = 0;
+
+function randomran() {
+    var navn00f = Math.floor(Math.random() * random_fornavn.length);
+    var navn00e = Math.floor(Math.random() * random_etternavn.length);
+    let navn01f = random_fornavn[navn00f];
+    let navn01e = random_etternavn[navn00e];
+
+    var penga_nivå = Math.floor(Math.random() * 101);
+    
+
+    var randnavn = navn01f + " " + navn01e;
+    console.log(randnavn);
+    var sjanse = Math.floor(Math.random() * 101);
+    var penge_nivå = Math.floor(Math.random() * penger_nivå.length);
+    let peng_nivå = penger_nivå[penge_nivå]
+    document.getElementById("ranoffer").innerHTML = "Offer:   " + randnavn;
+    document.getElementById("sjanse").innerHTML = "Sjanse:   " + sjanse + "%";
+    document.getElementById("penger_nivå").innerHTML = "Penger:   " + penge_nivå;
+
+}
+
+
+
+
