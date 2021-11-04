@@ -147,10 +147,6 @@ const penger_nivå = [
     "Ekstremt høyt"
 ];
 
-var randnavn = "";
-var money = 0;
-var sjanse = Math.floor(Math.random() * 101);
-
 function randomran() {
     var navn00f = Math.floor(Math.random() * random_fornavn.length);
     var navn00e = Math.floor(Math.random() * random_etternavn.length);
@@ -161,50 +157,67 @@ function randomran() {
     
     if (penga_nivå > 0 && penga_nivå < 5) {
         penge_nivå = 5;
-        console.log(penge_nivå)
-        console.log(penga_nivå)
       } else if (penga_nivå >= 5 && penga_nivå < 15) {
         penge_nivå = 4;
-        console.log(penge_nivå)
-        console.log(penga_nivå)
       } else if (penga_nivå >= 15 && penga_nivå < 30) {
         penge_nivå = 3;
-        console.log(penge_nivå)
-        console.log(penga_nivå)
       } else if (penga_nivå >= 30 && penga_nivå < 60) {
         penge_nivå = 2;
-        console.log(penge_nivå)
-        console.log(penga_nivå)
       } else if (penga_nivå >= 60 && penga_nivå < 70) {
         penge_nivå = 1;
-        console.log(penge_nivå)
-        console.log(penga_nivå)
       } else if (penga_nivå >= 70 && penga_nivå < 101) {
         penge_nivå = 0;
-        console.log(penge_nivå)
-        console.log(penga_nivå)
       }
 
     var randnavn = navn01f + " " + navn01e;
-    console.log(randnavn);
     sjanse = Math.floor(Math.random() * 101);
     let peng_nivå = penger_nivå[penge_nivå]
     document.getElementById("ranoffer").innerHTML = "Offer:   " + randnavn;
     document.getElementById("sjanse").innerHTML = "Sjanse:   " + sjanse + "%";
     document.getElementById("penger_nivå").innerHTML = "Penger nivå:   " + peng_nivå;
     document.getElementById("lagre").innerHTML = sjanse;
+    document.getElementById("lagre01").innerHTML = sjanse;
 }
 
 
 function våpen() {
-    var våpen_sjansje = 0;
-    var p = document.getElementById('lagre');
-    våpen_sjansje = p.textContent;
-    console.log(våpen_sjansje)
-    våpen_sjansje + 30;
-    if (våpen_sjansje >= 100) {
-        våpen_sjansje = 100;
+    if (document.getElementById("flexCheckDefault").checked) {
+        var våpen_sjansje = 0;
+        var p = document.getElementById('lagre');
+        våpen_sjansje = p.textContent;
+        våpen_sjansje = parseInt (våpen_sjansje, 10);
+        våpen_sjansje = våpen_sjansje + 30;
+        if (våpen_sjansje > 100) {
+            våpen_sjansje = 100;
+        }
+        document.getElementById("sjanse").innerHTML = "Sjanse:   " + våpen_sjansje + "%";
+        document.getElementById("lagre01").innerHTML = gammel_sjansje;
+    } else {
+        var p = document.getElementById('lagre');
+        var gammel_sjansje = 0;
+        gammel_sjansje = p.textContent;
+        gammel_sjansje = parseInt (gammel_sjansje, 10);
+        document.getElementById("sjanse").innerHTML = "Sjanse:   " + gammel_sjansje + "%";
+        document.getElementById("lagre01").innerHTML = gammel_sjansje;
     }
-    console.log(våpen_sjansje);
-    document.getElementById("sjanse").innerHTML = "Sjanse:   " + våpen_sjansje + "%";
+}
+
+
+
+function utfør_ran() {
+    var rand_tall = 0;
+    var sjansje = 0;
+    rand_tall = Math.floor(Math.random() * 101) + 1;
+
+    var p = document.getElementById('lagre01');
+    sjansje = p.textContent;
+    sjansje = parseInt (sjansje, 10);
+
+    console.log(sjansje);
+    console.log(rand_tall);
+    
+    var myNode = document.getElementById("info01");
+    while (myNode.firstChild) {
+            myNode.removeChild(myNode.lastChild);
+          }
 }
