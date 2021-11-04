@@ -149,6 +149,7 @@ const penger_nivå = [
 
 var randnavn = "";
 var money = 0;
+var sjanse = Math.floor(Math.random() * 101);
 
 function randomran() {
     var navn00f = Math.floor(Math.random() * random_fornavn.length);
@@ -156,20 +157,48 @@ function randomran() {
     let navn01f = random_fornavn[navn00f];
     let navn01e = random_etternavn[navn00e];
 
-    var penga_nivå = Math.floor(Math.random() * 101);
+    var penga_nivå = Math.floor(Math.random() * 101) + 1;
     
+    if (penga_nivå > 0 && penga_nivå < 5) {
+        penge_nivå = 5;
+        console.log(penge_nivå)
+        console.log(penga_nivå)
+      } else if (penga_nivå >= 5 && penga_nivå < 15) {
+        penge_nivå = 4;
+        console.log(penge_nivå)
+        console.log(penga_nivå)
+      } else if (penga_nivå >= 15 && penga_nivå < 30) {
+        penge_nivå = 3;
+        console.log(penge_nivå)
+        console.log(penga_nivå)
+      } else if (penga_nivå >= 30 && penga_nivå < 60) {
+        penge_nivå = 2;
+        console.log(penge_nivå)
+        console.log(penga_nivå)
+      } else if (penga_nivå >= 60 && penga_nivå < 70) {
+        penge_nivå = 1;
+        console.log(penge_nivå)
+        console.log(penga_nivå)
+      } else if (penga_nivå >= 70 && penga_nivå < 101) {
+        penge_nivå = 0;
+        console.log(penge_nivå)
+        console.log(penga_nivå)
+      }
 
     var randnavn = navn01f + " " + navn01e;
     console.log(randnavn);
-    var sjanse = Math.floor(Math.random() * 101);
-    var penge_nivå = Math.floor(Math.random() * penger_nivå.length);
+    sjanse = Math.floor(Math.random() * 101);
     let peng_nivå = penger_nivå[penge_nivå]
     document.getElementById("ranoffer").innerHTML = "Offer:   " + randnavn;
     document.getElementById("sjanse").innerHTML = "Sjanse:   " + sjanse + "%";
-    document.getElementById("penger_nivå").innerHTML = "Penger:   " + penge_nivå;
-
+    document.getElementById("penger_nivå").innerHTML = "Penger nivå:   " + peng_nivå;
 }
 
 
-
-
+function våpen() {
+    våpen_sjanse = document.getElementById("sjanse");
+    våpen_sjanse + 30
+    if (våpen_sjansje >= 100) {
+        våpen_sjansje = 100;
+    }
+}
