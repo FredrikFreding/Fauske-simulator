@@ -1,3 +1,8 @@
+// Variabler
+
+var utført = false;
+
+// Lister
 const bil_privatperson = [
     "Volvo 240",
     "BMW E30",
@@ -22,8 +27,6 @@ const bil_gata = [
     "Volvo 240",
     "Toyota HiAce"
 ];
-
-
 const stjel_hus_gata = [
     "snus",
     "bankkort",
@@ -54,7 +57,6 @@ const stjel_hus_privatperson = [
     "PC",
     "Radiostyrt bil"
 ];
-
 const traphouse = [
     "Kokain",
     "Hasj",
@@ -62,7 +64,6 @@ const traphouse = [
     "Benzo",
     "Molly",
 ];
-
 const random_fornavn = [
     "Per",
     "Noah",
@@ -96,7 +97,6 @@ const random_fornavn = [
     "Ludvig",
     "Benjamin"
 ];
-
 const random_etternavn = [
     "Olavson",
     "Fredrikson",
@@ -125,7 +125,6 @@ const random_etternavn = [
     "Iversen",
     "Strand"
 ];
-
 const offentlige_personer = [
     "Kongen",
     "Bent Høie",
@@ -137,7 +136,6 @@ const offentlige_personer = [
     "MagneMaker",
     "Raymond Andreassen"
 ];
-
 const penger_nivå = [
     "Veldig lavt",
     "Lavt",
@@ -148,7 +146,7 @@ const penger_nivå = [
 ];
 
 
-
+// Funksjoner
 function randomran() {
     var navn00f = Math.floor(Math.random() * random_fornavn.length);
     var navn00e = Math.floor(Math.random() * random_etternavn.length);
@@ -180,8 +178,6 @@ function randomran() {
     document.getElementById("lagre").innerHTML = sjanse;
     document.getElementById("lagre01").innerHTML = sjanse;
 }
-
-
 function våpen() {
     if (document.getElementById("flexCheckDefault").checked) {
         var våpen_sjansje = 0;
@@ -203,9 +199,6 @@ function våpen() {
         document.getElementById("lagre01").innerHTML = gammel_sjansje;
     }
 }
-
-var utført = false;
-
 function utfør_ran() {
     var rand_tall = 0;
     var sjansje = 0;
@@ -229,14 +222,13 @@ function utfør_ran() {
 
     }
     document.getElementById("lagre02").innerHTML = 70;
+    
     utført = true
     if (utført) {
         console.log("Braaa")
         cooldown()
     }
 }
-
-
 function cooldown(){
     var timeleft = 0;
     timeleft = document.getElementById('lagre02').textContent;
