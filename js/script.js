@@ -147,6 +147,8 @@ const penger_nivå = [
     "Ekstremt høyt"
 ];
 
+
+
 function randomran() {
     var navn00f = Math.floor(Math.random() * random_fornavn.length);
     var navn00e = Math.floor(Math.random() * random_etternavn.length);
@@ -202,7 +204,7 @@ function våpen() {
     }
 }
 
-
+var utført = false;
 
 function utfør_ran() {
     var rand_tall = 0;
@@ -212,23 +214,50 @@ function utfør_ran() {
     var p = document.getElementById('lagre01');
     sjansje = p.textContent;
     sjansje = parseInt (sjansje, 10);
+
+    var reward = 0;
+
     
     var myNode = document.getElementById("info01");
     while (myNode.firstChild) {
             myNode.removeChild(myNode.lastChild);
           }
     
+    document.getElementById("info01").innerHTML = "<div class='alignt-content-center'><p>Gratulerer, du klarte det!</p><p id='reward'></p></div><div id='countdown'></div>"
+    
     if (sjansje > rand_tall) {
 
     }
-    document.getElementById("lagre02").innerHTML = 100;
+    document.getElementById("lagre02").innerHTML = 70;
+    utført = true
+    if (utført) {
+        console.log("Braaa")
+        cooldown()
+    }
 }
 
-var timeleft = document.getElementById("lagre02").innerHTML ;
-var downloadTimer = setInterval(function(){
-  if(timeleft <= 0){
-    clearInterval(downloadTimer);
-  }
-  document.getElementById("progressBar").value = 10 - timeleft;
-  timeleft -= 1;
-}, 1000);
+
+function cooldown(){
+    var timeleft = 0;
+    timeleft = document.getElementById('lagre02').textContent;
+    timeleft = parseInt (timeleft, 10);
+    localStorage.setItem("tid", timeleft);
+    timeleft = localStorage.getItem("tid");
+    
+    if (timeleft > 0) {
+        var myNode = document.getElementById("info01");
+        while (myNode.firstChild) {
+                myNode.removeChild(myNode.lastChild);
+              }
+        document.getElementById("info01").innerHTML = "<div class='d-flex flex-column justify-content-center align-items-center w-100 h-100'><p id='p_01'>Du har fortsett:</p> <br> <p class='text-center fs-3' id='countdown'></p> <br> <p id='p_01'>sekunder igjen.</p></div>"
+        var timer = setInterval(function(){
+            if(timeleft <= 0){
+              clearInterval(timer);
+              location.reload();
+            } else {
+              document.getElementById("countdown").innerHTML = timeleft;
+            }
+            timeleft -= 1;
+          }, 1000);
+    }
+}
