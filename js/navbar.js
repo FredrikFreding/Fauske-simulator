@@ -8,4 +8,4 @@ document.querySelectorAll('.dropdown-toggle').forEach(item => {
         event.target.parentElement.classList.toggle('toggle-change');
       }
     })
-  });  
+  });

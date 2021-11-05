@@ -76,3 +76,12 @@
 #p_01 {
   margin: 3%;
 }
+
+#sidebar {
+  animation: mymove 7s infinite;
+  border-top: 3px solid rgb(223, 17, 17);
+}
+
+@keyframes mymove {
+  50% {border-color: rgb(35, 22, 224);}
+}
