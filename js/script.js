@@ -212,12 +212,23 @@ function utfør_ran() {
     var p = document.getElementById('lagre01');
     sjansje = p.textContent;
     sjansje = parseInt (sjansje, 10);
-
-    console.log(sjansje);
-    console.log(rand_tall);
     
     var myNode = document.getElementById("info01");
     while (myNode.firstChild) {
             myNode.removeChild(myNode.lastChild);
           }
+    
+    if (sjansje > rand_tall) {
+
+    }
+    document.getElementById("lagre02").innerHTML = 100;
 }
+
+var timeleft = document.getElementById("lagre02").innerHTML ;
+var downloadTimer = setInterval(function(){
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+  }
+  document.getElementById("progressBar").value = 10 - timeleft;
+  timeleft -= 1;
+}, 1000);
