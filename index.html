@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="../../../assets/css/style.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
-<body class="main-bg" scroll="no" style="overflow: hidden">
+<body onload="load()" class="main-bg" scroll="no" style="overflow: hidden">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="../../../index.html">Fauske Smiulator</a>
+          <a class="navbar-brand" href="#" onclick="endre('main')">Fauske Smiulator</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -25,7 +25,7 @@
                   Ran noen på gata
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/HTML/handlinger/Ran/ran-privatperson.html">Ran en privatperson</a></li>
+                  <li id="ran_priv"><a class="dropdown-item" href="#" onclick="endre('ran_privat');randomran();cooldown()">Ran en privatperson</a></li>
                   <li><a class="dropdown-item" href="/HTML/handlinger/Ran/ran-offentlig-person.html">Ran en offentlig person</a></li>
                   <li><a class="dropdown-item" href="/HTML/handlinger/Ran/ran-tilfeldig-gata.html">Ran en tilfeldig på gata</a></li>
                 </ul>
@@ -88,7 +88,7 @@
             Lager
         </a>
         <li>
-            <li class="nav-link h6 text-white my-2"><i class="fas fa-coins fa-fw"></i> Penger: </li>
+            <li id="pengsjit" class="nav-link h6 text-white my-2"><i class="fas fa-coins fa-fw"></i> Penger: </li>
         </li>
         <li><hr class="dropdown-divider"></li>
         <li>
@@ -104,13 +104,8 @@
     </div>
   </div>
     <div class="col d-flex justify-content-center align-content-center" id="info">
-      <div class="border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column">
-        <p class="fs-1 text-center">Hovedkvarter</p>
-        <br>
-        <br>
-        <div class="align-self-center justify-content-center">
-        
-    </div>
+      <div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'>
+        <h1 class="text-center">Hovedkvarter</h1>
       </div>
       </div>
     </div>
