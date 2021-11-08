@@ -295,7 +295,7 @@ function endre(type) {
         while (myNode.firstChild) {
                 myNode.removeChild(myNode.lastChild);
               }
-        document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><p class='fs-1 text-center'>Ran en privatperson.</p><div class='align-self-center justify-content-center'><p class='fs-2 text-center'>Hvem vil du rane?</p><div class='align-self-center'> </div></div><button onclick='nytt()' id='finn_ran' type='button'class='btn btn-secondary w-50 align-self-center'>Finn ransoffer - Pris: 200kr</button><p id='mld' class='text-center'></p><p id='ranoffer' class='align-self-center'></p><p class='fs-5 align-self-center' id='sjanse'></p><p class='fs-5 align-self-center' id='penger_nivå'></p><button onclick='våpen()' type='button'class='btn btn-secondary w-50 align-self-center'>Kjøp og bruk et våpen - pris: 1 500</button><button onclick='utfør_ran()'id='utfør_ran' type='button' class='btn btn-secondary w-50 align-self-center'>Utfør ran</button></div>" 
+        document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><p class='fs-1 text-center'>Ran en privatperson.</p><div class='align-self-center justify-content-center'><p class='fs-2 text-center'>Hvem vil du rane?</p><div class='align-self-center'> </div></div><button onclick='nytt_offentlig()' id='finn_ran' type='button'class='btn btn-secondary w-50 align-self-center'>Finn ransoffer - Pris: 200kr</button><p id='mld' class='text-center'></p><p id='ranoffer' class='align-self-center'></p><p class='fs-5 align-self-center' id='sjanse'></p><button onclick='våpen()' type='button'class='btn btn-secondary w-50 align-self-center'>Kjøp og bruk et våpen - pris: 1 500</button><button onclick='utfør_ran()'id='utfør_ran' type='button' class='btn btn-secondary w-50 align-self-center'>Utfør ran</button></div>" 
     }
 }
 
@@ -317,4 +317,14 @@ function offentlig_ran() {
     sjanse = 100;    //Math.floor(Math.random() * 20);
     document.getElementById("ranoffer").innerHTML = "Offer:   " + randnavn;
     document.getElementById("sjanse").innerHTML = "Sjanse:   " + sjanse + "%";
+}
+
+function nytt_offentlig() {
+    if (penger > 1500) {
+        penger = penger - 1500;
+        document.getElementById("pengsjit").innerHTML = "<i class='fas fa-coins fa-fw'></i> Penger: " + penger;
+        offentlig_ran();
+    } else {
+        document.getElementById("mld").innerHTML = "Du har ikke nok penger!";
+    }
 }
