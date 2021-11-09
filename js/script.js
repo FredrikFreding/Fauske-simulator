@@ -1,3 +1,59 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyCIUwryGaUDbFk9CNwmicOZOrl5_J1vLAM",
+  authDomain: "fauskesimulator.firebaseapp.com",
+  projectId: "fauskesimulator",
+  storageBucket: "fauskesimulator.appspot.com",
+  messagingSenderId: "64698836993",
+  appId: "1:64698836993:web:a6d97f90cdd7075dd37800",
+  measurementId: "G-VRXQ6X4B8W"
+};
+
+import { initializeApp } from 'firebase/app';
+
+// TODO: Replace the following with your app's Firebase project configuration
+const firebaseConfig = {
+    apiKey: "API_KEY",
+    authDomain: "PROJECT_ID.firebaseapp.com",
+    databaseURL: "https://PROJECT_ID.firebaseio.com",
+    projectId: "PROJECT_ID",
+    storageBucket: "PROJECT_ID.appspot.com",
+    messagingSenderId: "SENDER_ID",
+    appId: "APP_ID",
+    measurementId: "G-MEASUREMENT_ID",
+};
+
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+// Follow this pattern to import other Firebase services
+// import { } from 'firebase/<service>';
+
+// TODO: Replace the following with your app's Firebase project configuration
+const firebaseConfig = {
+    apiKey: "API_KEY",
+    authDomain: "PROJECT_ID.firebaseapp.com",
+    databaseURL: "https://PROJECT_ID.firebaseio.com",
+    projectId: "PROJECT_ID",
+    storageBucket: "PROJECT_ID.appspot.com",
+    messagingSenderId: "SENDER_ID",
+    appId: "APP_ID",
+    measurementId: "G-MEASUREMENT_ID",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Get a list of cities from your database
+async function getCities(db) {
+  const citiesCol = collection(db, 'cities');
+  const citySnapshot = await getDocs(citiesCol);
+  const cityList = citySnapshot.docs.map(doc => doc.data());
+  return cityList;
+}
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 // Variabler
 
 var utført = false;
@@ -453,6 +509,7 @@ var intervalId = window.setInterval(function(){
     } else {
         clearInterval(intervalId)
     }
+    savex();
   }, 1000);
 
 function endre(type) {
@@ -560,4 +617,24 @@ function dinebiler() {
     document.getElementById("ferrari612scaglietti").innerHTML = Ferrari612Scaglietti;
     document.getElementById("lamborghinidablo").innerHTML = LamborghiniDiablo;
     document.getElementById("chevroletcorvettez06").innerHTML = ChevroletCorvetteZ06;
+}
+
+function savex() {
+    firebase.database().ref('variabler/').set({
+        penger:penger,
+        volvo240glturbo:Volvo240glturbo,
+        Volvo740:Volvo740,
+        Volvo940:Volvo940,
+        Volvo240:Volvo240,
+        ToyotaHiAce:ToyotaHiAce,
+        BMWE30:BMWE30,
+        OpelKadett:OpelKadett,
+        OpelAstra:OpelAstra,
+        FordMondeo:FordMondeo,
+        VolkswagenUp:VolkswagenUp,
+        FerrariLaFerrari:FerrariLaFerrari,
+        Ferrari612Scaglietti:Ferrari612Scaglietti,
+        LamborghiniDiablo:LamborghiniDiablo,
+        ChevroletCorvetteZ06:ChevroletCorvetteZ06
+    })
 }
