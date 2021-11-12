@@ -8,9 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
-<body onload="load()" class="main-bg" scroll="no" style="overflow: hidden">
+<body onload="load();randombil()" class="main-bg" scroll="no" style="overflow: hidden">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#" onclick="endre('main')">Fauske Smiulator</a>
@@ -33,8 +34,8 @@
                   Stjel en bil
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#" onclick="endre('tilfeldig_bil');randombil();cooldown_bil()">Stjel en tilfeldig på gata</a></li>
-                  <li><a class="dropdown-item" href="#" onclick="endre('offentlig_bil');randombil0();cooldown_bil()">Stjel fra en offentlig person</a></li>
+                  <li><a class="dropdown-item" href="#">Stjel en tilfeldig på gata</a></li>
+                  <li><a class="dropdown-item" href="#">Stjel fra en offentlig person</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -88,27 +89,34 @@
             <li id="pengsjit" class="nav-link h6 text-white my-2"><i class="fas fa-coins fa-fw"></i> Penger: </li>
         </li>
         <li><hr class="dropdown-divider"></li>
-        <li >
-            <li onclick="endre('selg_biler');dinebiler()" class="nav-link h6 text-white my-2"><i class="fas fa-car fa-fw"></i> Biler: </li>
+        <li>
+            <li class="nav-link h6 text-white my-2"><i class="fas fa-car fa-fw"></i> Biler </li>
         </li>
         <li>
-            <li class="nav-link h6 text-white my-2"><i class="fas fa-box-open fa-fw"></i> Ting: </li>
+            <li class="nav-link h6 text-white my-2"><i class="fas fa-box-open fa-fw"></i> Ting </li>
         </li>
         <li>
-            <li class="nav-link h6 text-white my-2"><i class="fas fa-pills fa-fw"></i> Narkotika: </li>
+            <li class="nav-link h6 text-white my-2"><i class="fas fa-pills fa-fw"></i> Narkotika </li>
         </li>
         </ul>
     </div>
   </div>
     <div class="col d-flex justify-content-center align-content-center" id="info">
-
+      <div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'>
+        <h1 class='text-center'>Stjel en tilfeldig bil</h1>
+        <div id="idkxd" class="w-100 align-self-center d-flex align-items-center justify-content-center flex-column">
+        <p class="text-center fs-4 text" id="bil-type"></p>
+        <p class="text-center fs-4 text" id="bil_sjanse"></p>
+        </div>
+        <button onclick="nytt_bil()" id="finn_bil" type="button" class="btn btn-secondary w-50 align-self-center">Finn en ny bil - 2 000kr</button>
+        <p id="finn_ny_bil" class="text-center"></p>
+        <button onclick="utfør_bil()" id="utført_bil" type="button" class="btn btn-secondary w-50 align-self-center align-text-bottom mt-auto">Utfør ran</button>
+      </div>
       </div>
 </div>
-<script type="module" src="/node_modules/firebase/firebase-app.js"></script>
-<script type="module" src="/node_modules/firebase/firebase-database.js"></script>
-<script type="module" src="/node_modules/firebase/firebase-auth.js"></script>
+<script src="/js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<script src="js/navbar.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script type="module" src="/dist/bundle.js"></script>
 </body>
 </html>
