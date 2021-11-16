@@ -13,7 +13,7 @@
 <body onload="load()" class="main-bg" scroll="no" style="overflow: hidden">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#" onclick="endre('main')">Fauske Smiulator</a>
+          <a class="navbar-brand" href="#" onclick="endre('main');load()">Fauske Smiulator</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -42,10 +42,8 @@
                   Stjel fra et hus
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/HTML/handlinger/Ran hus/stjel-hus-privat.html">Stjel fra et privat hus</a></li>
-                  <li><a class="dropdown-item" href="/HTML/handlinger/Ran hus/stjel-hus-offentlig.html">Stjel fra en offentlig byggning</a></li>
-                  <li><a class="dropdown-item" href="/HTML/handlinger/Ran hus/stjel-hus-gata.html">Stjel noe på gata</a></li>
-                  <li><a class="dropdown-item" href="/HTML/handlinger/Ran hus/stjel-hus-butikk.html">Stjel noe på fra en butikk</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="endre('privathus');stjelprivathus();cooldown_hus()">Stjel fra et privat hus</a></li>
+                  <li><a class="dropdown-item" href="#">Stjel noe på fra biltema</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -92,7 +90,7 @@
             <li onclick="endre('selg_biler');dinebiler()" class="nav-link h6 text-white my-2"><i class="fas fa-car fa-fw"></i> Biler </li>
         </li>
         <li>
-            <li class="nav-link h6 text-white my-2"><i class="fas fa-box-open fa-fw"></i> Ting </li>
+            <li onclick="endre('selg_ting');dineting()" class="nav-link h6 text-white my-2"><i class="fas fa-box-open fa-fw"></i> Ting </li>
         </li>
         <li>
             <li class="nav-link h6 text-white my-2"><i class="fas fa-pills fa-fw"></i> Narkotika </li>
@@ -100,18 +98,27 @@
         </ul>
     </div>
   </div>
-    <div class="col d-flex justify-content-center align-content-center" id="info">
+    <div class="col d-flex justify-content-center" id="info">
       <div id="info00" class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'>
         <h1 class="text-center">Hovedkvarter</h1>
         <div id="littinfo" class="w-100 align-self-center">
+        <p class="text-center fs-4"><b>Biler</b></p>
         <div class="litta align-self-center">
-        <p class="text-center gg" id="penga">g</p>
-        <p class="text-center gg" id="bila">gata</p>
+        <p class="text-center gg" id="bila_verdi"></p>
+        <p class="text-center gg" id="bila_antall"></p>
         </div>
+        <br>
+        <p class="text-center fs-4"><b>Ting</b></p>
         <div class="litta align-self-center">
-        <p class="text-center gg" id="tinga">gata</p>
-        <p class="text-center gg" id="narkoverdig">gata</p>
+        <p class="text-center gg" id="tinga_verdi"></p>
+        <p class="text-center gg" id="tinga_antall"></p>
         </div>
+        <br>
+        <p class="text-center fs-4"><b>Narkotika</b></p>
+        <div class="litta align-self-center">
+          <p class="text-center gg" id="narko_verdi"></p>
+          <p class="text-center gg" id="narko_antall"></p>
+          </div>
       </div>
       </div>
       </div>

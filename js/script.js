@@ -11,6 +11,14 @@ var bil_sjanse = 0;
 var random_bil = 0;
 var bil_rand = 0;
 var bil_cd = 0;
+var antall_biler = 0;
+var verdi_biler = 0;
+var solgt_biler = 0;
+solgt_biler = "solgt_biler"
+var adressa = 0;
+var hus_cd = 0;
+var antall_tinga = 0;
+var tinga_verdig = 0;
 // Variabler
 
 // Biler
@@ -45,6 +53,46 @@ var LamborghiniDiablo_pris = 900000;
 var ChevroletCorvetteZ06_pris = 400000;
 // Biler
 
+// Hus
+var TV = 0;
+var Alarmsystem = 0;
+var Dress = 0;
+var Gitarsamling = 0;
+var Laptop = 0;
+var PC = 0;
+var Radiostyrtbil = 0;
+var PS4 = 0;
+var PS5 = 0;
+var XboxOne = 0;
+var Xbox360 = 0;
+var GamingPC = 0;
+var Effektanlegg = 0;
+var Stereoanlegg = 0;
+var Gressklipper = 0;
+var Turbo = 0;
+var Anlegg = 0;
+var Motorsag = 0;
+// Hus priser
+var TV_pris = 600;
+var Alarmsystem_pris = 2000;
+var Dress_pris = 3000;
+var Gitarsamling_pris = 5000;
+var Laptop_pris = 1500;
+var PC_pris = 3000;
+var Radiostyrtbil_pris = 500;
+var PS4_pris = 1000;
+var PS5_pris = 7000;
+var XboxOne_pris = 1500;
+var Xbox360_pris = 500;
+var GamingPC_pris = 10000;
+var Effektanlegg_pris = 20000;
+var Stereoanlegg_pris = 7000;
+var Gressklipper_pris = 12000;
+var Turbo_pris = 30000;
+var Anlegg_pris = 5000;
+var Motorsag_pris = 3000;
+// Hus
+
 // Lister
 const bil_offentlig_person = [
     "Ferrari LaFerrari",
@@ -64,27 +112,16 @@ const bil_gata = [
     "Ford Mondeo",
     "Volkswagen Up!"
 ];
-const stjel_hus_gata = [
-    "snus",
-    "bankkort",
-    "Luftfilter",
-    "Badering",
-    "Bedøvelsespistol"
-];
-const stjel_hus_butikk = [
-    "TV",
-    "Radio",
+
+const biltema = [
     "Effektanlegg",
-    "Senkesett",
+    "Stereo anlegg",
+    "Gressklipper",
     "Turbo",
-    "Gullsmykke"
-];
-const stjel_hus_offentlig = [
-    "Gull Trone",
-    "Konge krone",
-    "Diamant smykke",
-    "Stor Diamant"
-];
+    "Anlegg",
+    "Motorsag"
+]
+
 const stjel_hus_privatperson = [
     "TV",
     "Alarmsystem",
@@ -92,14 +129,19 @@ const stjel_hus_privatperson = [
     "Gitar samling",
     "Laptop",
     "PC",
-    "Radiostyrt bil"
+    "Radiostyrt bil",
+    "PS4",
+    "PS5",
+    "Xbox One",
+    "Xbox 360",
+    "Gaming PC"
 ];
 const traphouse = [
     "Kokain",
     "Hasj",
     "Amfetamin",
     "Benzo",
-    "Molly",
+    "Molly"
 ];
 const random_fornavn = [
     "Per",
@@ -182,6 +224,8 @@ const penger_nivå = [
     "Ekstremt høyt"
 ];
 
+var gata = "Åkerveien Ålegressveien Andedamveien Ankerveien Ankjellveien Asalveien Åsbakk Aspveien Badestrandveien Bådsvik Balmig Bentevassveien Bergverksveien Bjørkmoveien Bjørkveien Bjørnmoveien Blålyngveien Blåskjellveien Bodøveien Brattengveien Bratthaugen Brekka Bremsebk Brinkveien Buen Buveien Bærlyngveien Dalanveien Djupdal Eiaveien Einerveien Einmoen Eliasbakken Eriksbakkveien Erikshøgda Erikstadtunet Erikstadveien Eriksvollveien Farvikveien Finneidgata FjæreveienFollaveien Framsynveien Fritunbakken Fuglveien Furulia Furutoppen Furuveien Gautvollen Geitbergveien Granveien Grendeveien Greplyngveien Gryttingveien Grønås Grønåsveien Gymnasveien Haganesveien Hammerveien Håndverksveien Hansbakken HauanveienHaubakken Haugveien Heggveien Hegreveien Heia Helligberget Helsetunet Helskarveien Hjemås Holstad Holtan Høgstveien Industriveien Jernbanegata Kantlyngveien Kirkeveien Kjerrveien Kleiva Kleivbakken Kleivhammaren Kleivmyra Klungset Kopparveien Krabbeveien Krepsveien Krokvollveien Kvitblik Kvitlyngveien Leitebakken Leivset Liaveien Lillnesveien Linerleveien Linneaveien Lund Lundhøgda Lundveien Lyngveien Løgavlen Lønneveien Løvgavlveien Måkeveien Malmveien Marbakken MarmorveienMedås Midtigardsveien Moen Moselyngveien Mosemyrveien Moveien Muslingveien Myrkollveien Myrveien Møllnveien Naustveien Nedre Hauanvei Nedre Tortenli Nerigardsveien Nermoveien Nordimarkveien Ny-Jord Nymoveien Nyveien Oldern Oppigardsveien Poppelveien Postveien Rabbenveien Rådhusgata Reinroseveien Reitanveien Reitvollveien Rekeveien Rismoveien Risvoll Rognveien Rødås Rørvik Røsslyngveien Røvik Saltbakkveien Saltdalveien Sandmoveien Selbergveien Seljeveien Setsåbakken Sildreveien Sisikveien Siva Sjåheiveien Sjøgata Sjønellikveien Sjønståveien Sjøroseveien Sjøstjerneveien Sjøvollveien Skiferveien Skjerstadveien Skoanveien Skogholtveien Skogveien Skysselvik Smedveien Soleieveien Solhøgda Solvik Solvollveien Storgaten Stranda Strandbuen Stærveien Sulitjelmaveien Svaleveien Svartvassveien Svenskveien Sykehusveien Symreveien Tangveien Tareveien Telegrafveien Terminalveien Terneveien Tinkeliheia Tiurveien Tjeldveien Torggata Triangelveien Trostveien Tunveien Tuven Tverå Tørresvik Valnesfjordveien Vangsveien Vatnan Vatnbygda Vatnbygdveien Venset Vesterveien Vikaveien Vinkelen Virumveien Vollgata Ytterveien Øvre Tortenli Øynes";
+const gater = gata.split(' ');
 // Variabler for funksjoner global
 var tullebukk = 0;
 tullebukk = utfør_bil.length;
@@ -198,6 +242,772 @@ tullebukk = dinebiler.length;
 // Variabler for funksjoner global
 
 // Funksjoner
+function ran_biltema() {
+    sjanse = Math.floor(Math.random() * (10 - 0 + 1) + 0)
+    document.getElementById("sjanse").innerHTML = "Du har: <b>" + sjanse + "%</b> sjanse"
+}
+
+function utfør_biltema() {
+    var randomsjanse = Math.floor(Math.random() * 101) + 1;
+    if (sjanse >= randomsjanse) {
+            document.getElementById("info01").innerHTML = "<h1 class='text-center'>Du klarte det!</h1><br><p class='text-center' id='mld00'></p><p class='text-center'>Du fikk meg deg:</p><p class='text-center' id='mld01'></p><p class='text-center' id='mld02'></p><p class='text-center' id='mld03'></p><p class='text-center' id='mld04'></p><p class='text-center' id='mld05'></p><p class='text-center' id='mld06'></p><p class='text-center' id='mld07'></p><p class='text-center' id='mld08'></p><p class='text-center' id='mld09'></p><p class='text-center' id='mld10'></p>"
+            var hus1 = Math.floor(Math.random() * biltema.length);
+            var hus2 = Math.floor(Math.random() * biltema.length);
+            var hus3 = Math.floor(Math.random() * biltema.length);
+            var hus_ting1 = stjel_hus_privatperson[hus1];
+            var hus_ting2 = stjel_hus_privatperson[hus2];
+            var hus_ting3 = stjel_hus_privatperson[hus3];
+            var pengaf = Math.floor(Math.random() * (70000 - 10000 + 1) + 10000)
+            penger = penger + pengaf;
+            document.getElementById("pengsjit").innerHTML = "<i class='fas fa-coins fa-fw'></i> Penger: " + penger;
+
+    
+            var antall_ting = Math.floor(Math.random() * (3 + 1) + 1);
+
+            document.getElementById("mld00").innerHTML = "Du klarte å rane: <b>Biltema</b>";
+            if (antall_ting === 1) {
+                document.getElementById("mld01").innerHTML = "<b>" + hus_ting1 + "</b>"
+                document.getElementById("mld04").innerHTML = "<b>" + pengaf + "</b> kroner"
+                if (hus_ting1 === "Effektanlegg") {
+                    Effektanlegg++;
+                } else if (hus_ting1 === "Stereo anlegg") {
+                    Stereoanlegg++;
+                } else if (hus_ting1 === "Gressklipper") {
+                    Gressklipper++;
+                } else if (hus_ting1 === "Turbo") {
+                    Turbo++;
+                } else if (hus_ting1 === "Anlegg") {
+                    Anlegg++;
+                } else if (hus_ting1 === "Motorsag") {
+                    Motorsag++;
+                }
+            } else if (antall_ting === 2) {
+                document.getElementById("mld01").innerHTML = "<b>" + hus_ting1 + "</b>"
+                document.getElementById("mld02").innerHTML = "<b>" + hus_ting2 + "</b>"
+                document.getElementById("mld04").innerHTML = "<b>" + pengaf + "</b> kroner"
+                if (hus_ting1 === "Effektanlegg") {
+                    Effektanlegg++;
+                } else if (hus_ting1 === "Stereo anlegg") {
+                    Stereoanlegg++;
+                } else if (hus_ting1 === "Gressklipper") {
+                    Gressklipper++;
+                } else if (hus_ting1 === "Turbo") {
+                    Turbo++;
+                } else if (hus_ting1 === "Anlegg") {
+                    Anlegg++;
+                } else if (hus_ting1 === "Motorsag") {
+                    Motorsag++;
+                }
+                if (hus_ting2 === "Effektanlegg") {
+                    Effektanlegg++;
+                } else if (hus_ting2 === "Stereo anlegg") {
+                    Stereoanlegg++;
+                } else if (hus_ting2 === "Gressklipper") {
+                    Gressklipper++;
+                } else if (hus_ting2 === "Turbo") {
+                    Turbo++;
+                } else if (hus_ting2 === "Anlegg") {
+                    Anlegg++;
+                } else if (hus_ting2 === "Motorsag") {
+                    Motorsag++;
+                }
+            } else if (antall_ting === 3) {
+                document.getElementById("mld01").innerHTML = "<b>" + hus_ting1 + "</b>"
+                document.getElementById("mld02").innerHTML = "<b>" + hus_ting2 + "</b>"
+                document.getElementById("mld03").innerHTML = "<b>" + hus_ting3 + "</b>"
+                document.getElementById("mld04").innerHTML = "<b>" + pengaf + "</b> kroner"
+
+                if (hus_ting1 === "Effektanlegg") {
+                    Effektanlegg++;
+                } else if (hus_ting1 === "Stereo anlegg") {
+                    Stereoanlegg++;
+                } else if (hus_ting1 === "Gressklipper") {
+                    Gressklipper++;
+                } else if (hus_ting1 === "Turbo") {
+                    Turbo++;
+                } else if (hus_ting1 === "Anlegg") {
+                    Anlegg++;
+                } else if (hus_ting1 === "Motorsag") {
+                    Motorsag++;
+                }
+                if (hus_ting2 === "Effektanlegg") {
+                    Effektanlegg++;
+                } else if (hus_ting2 === "Stereo anlegg") {
+                    Stereoanlegg++;
+                } else if (hus_ting2 === "Gressklipper") {
+                    Gressklipper++;
+                } else if (hus_ting2 === "Turbo") {
+                    Turbo++;
+                } else if (hus_ting2 === "Anlegg") {
+                    Anlegg++;
+                } else if (hus_ting2 === "Motorsag") {
+                    Motorsag++;
+                }
+                if (hus_ting3 === "Effektanlegg") {
+                    Effektanlegg++;
+                } else if (hus_ting3 === "Stereo anlegg") {
+                    Stereoanlegg++;
+                } else if (hus_ting3 === "Gressklipper") {
+                    Gressklipper++;
+                } else if (hus_ting3 === "Turbo") {
+                    Turbo++;
+                } else if (hus_ting3 === "Anlegg") {
+                    Anlegg++;
+                } else if (hus_ting3 === "Motorsag") {
+                    Motorsag++;
+                }
+            } else if (antall_ting === 0) {
+                document.getElementById("mld01").innerHTML = "<b>" + pengaf + "</b> kroner"
+            }
+    } else {
+        document.getElementById("info01").innerHTML = "<h1 class='text-center'>Du klarte det ikke</h1><br><p class='text-center' id='mld'></p><p class='text-center' id='mld2'></p>";
+        document.getElementById("mld").innerHTML = "Du klarte ikke å rane: <b>Biltema</b>"
+        document.getElementById("mld2").innerHTML = "Prøv igjen senere!"
+    } 
+}
+
+
+
+function stjelprivathus() {
+    if (hus_cd > 0) {
+        cooldown_hus()
+    }
+    const d = new Date();
+    var hour = d.getHours();
+
+    var navn00f = Math.floor(Math.random() * random_fornavn.length);
+    var navn00e = Math.floor(Math.random() * random_etternavn.length);
+    var navn01f = random_fornavn[navn00f];
+    var navn01e = random_etternavn[navn00e];
+    randnavn = navn01f + " " + navn01e;
+    var gatehus = Math.floor(Math.random() * gater.length);
+    var gategg = gater[gatehus]
+    var gatenmr = Math.floor(Math.random() * 101) + 1;
+    adressa = gategg + " " + gatenmr;
+
+    if (hour > 7 && hour < 19) {
+        sjanse = Math.floor(Math.random() * (10 - 0 + 1) + 0)
+        document.getElementById("sjansaa").innerHTML = "Du har: <b>" + sjanse + "%</b> sjanse"
+        document.getElementById("natt/dag").innerHTML = "Siden det er dag, har du mindre sjanse (<b>0</b> - <b>10%</b>)"
+    } else {
+        sjanse = Math.floor(Math.random() * (40 - 10 + 1) + 10)
+        document.getElementById("sjansaa").innerHTML = "Du har: <b>" + sjanse + "%</b> sjanse"
+        document.getElementById("natt/dag").innerHTML = "Siden det er natt, har du mer sjanse (<b>10</b> - <b>40%</b>)"
+    }
+    document.getElementById("adresse").innerHTML = "<b>Adresse:</b> " + adressa;
+    document.getElementById("person").innerHTML = "Bryt deg inn hos: <b>" + randnavn + "</b>";
+}
+
+function stjelprivathus_nytt() {
+    if (penger >= 1000) {
+        penger = penger - 1000;
+        document.getElementById("pengsjit").innerHTML = "<i class='fas fa-coins fa-fw'></i> Penger: " + penger;
+        stjelprivathus();
+    } else {
+        document.getElementById("ny_mld").innerHTML = "Du har ikke nok penger!"
+    }
+}
+
+function utfør_privathus() {
+    var myNode = document.getElementById("info00");
+    while (myNode.firstChild) {
+            myNode.removeChild(myNode.lastChild);
+          }
+    var randsjanse = Math.floor(Math.random() * 101) + 1;
+
+    if (sjanse >= randsjanse) {
+        document.getElementById("info00").innerHTML = "<h1 class='text-center'>Du klarte det!</h1><br><p class='text-center' id='mld00'></p><p class='text-center'>Du fikk meg deg:</p><p class='text-center' id='mld01'></p><p class='text-center' id='mld02'></p><p class='text-center' id='mld03'></p><p class='text-center' id='mld04'></p><p class='text-center' id='mld05'></p><p class='text-center' id='mld06'></p><p class='text-center' id='mld07'></p><p class='text-center' id='mld08'></p><p class='text-center' id='mld09'></p><p class='text-center' id='mld10'></p>"
+        var hus1 = Math.floor(Math.random() * stjel_hus_privatperson.length);
+        var hus2 = Math.floor(Math.random() * stjel_hus_privatperson.length);
+        var hus3 = Math.floor(Math.random() * stjel_hus_privatperson.length);
+        var hus4 = Math.floor(Math.random() * stjel_hus_privatperson.length);
+        var hus5 = Math.floor(Math.random() * stjel_hus_privatperson.length);
+        var hus6 = Math.floor(Math.random() * stjel_hus_privatperson.length);
+        var hus_ting1 = stjel_hus_privatperson[hus1];
+        var hus_ting2 = stjel_hus_privatperson[hus2];
+        var hus_ting3 = stjel_hus_privatperson[hus3];
+        var hus_ting4 = stjel_hus_privatperson[hus4];
+        var hus_ting5 = stjel_hus_privatperson[hus5];
+        var hus_ting6 = stjel_hus_privatperson[hus6];
+
+        var antall_ting = Math.floor(Math.random() * (6 + 1) + 1)
+
+        document.getElementById("mld00").innerHTML = "Du klarte å rane: <b>" + randnavn + "</b>"
+
+        if (antall_ting === 1) {
+            document.getElementById("mld01").innerHTML = "<b>" + hus_ting1 + "</b>";
+            if (hus_ting1 === "TV") {
+                TV++;
+            } else if (hus_ting1 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting1 === "Dress") {
+                Dress++;
+            } else if (hus_ting1 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting1 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting1 === "PC") {
+                PC++;
+            } else if (hus_ting1 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting1 === "PS4") {
+                PS4++;
+            } else if (hus_ting1 === "PS5") {
+                PS5++;
+            } else if (hus_ting1 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting1 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting1 === "Gaming PC") {
+                GamingPC++;
+            }
+
+        } else if (antall_ting === 2) {
+            document.getElementById("mld01").innerHTML = "<b>" + hus_ting1 + "</b>";
+            document.getElementById("mld02").innerHTML = "<b>" + hus_ting2 + "</b>";
+
+            if (hus_ting1 === "TV") {
+                TV++;
+            } else if (hus_ting1 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting1 === "Dress") {
+                Dress++;
+            } else if (hus_ting1 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting1 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting1 === "PC") {
+                PC++;
+            } else if (hus_ting1 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting1 === "PS4") {
+                PS4++;
+            } else if (hus_ting1 === "PS5") {
+                PS5++;
+            } else if (hus_ting1 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting1 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting1 === "Gaming PC") {
+                GamingPC++;
+            }
+            if (hus_ting2 === "TV") {
+                TV++;
+            } else if (hus_ting2 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting2 === "Dress") {
+                Dress++;
+            } else if (hus_ting2 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting2 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting2 === "PC") {
+                PC++;
+            } else if (hus_ting2 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting2 === "PS4") {
+                PS4++;
+            } else if (hus_ting2 === "PS5") {
+                PS5++;
+            } else if (hus_ting2 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting2 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting2 === "Gaming PC") {
+                GamingPC++;
+            }
+        } else if (antall_ting === 3) {
+            document.getElementById("mld01").innerHTML = "<b>" + hus_ting1 + "</b>";
+            document.getElementById("mld02").innerHTML = "<b>" + hus_ting2 + "</b>";
+            document.getElementById("mld03").innerHTML = "<b>" + hus_ting3 + "</b>";
+
+            if (hus_ting1 === "TV") {
+                TV++;
+            } else if (hus_ting1 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting1 === "Dress") {
+                Dress++;
+            } else if (hus_ting1 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting1 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting1 === "PC") {
+                PC++;
+            } else if (hus_ting1 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting1 === "PS4") {
+                PS4++;
+            } else if (hus_ting1 === "PS5") {
+                PS5++;
+            } else if (hus_ting1 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting1 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting1 === "Gaming PC") {
+                GamingPC++;
+            }
+            if (hus_ting2 === "TV") {
+                TV++;
+            } else if (hus_ting2 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting2 === "Dress") {
+                Dress++;
+            } else if (hus_ting2 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting2 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting2 === "PC") {
+                PC++;
+            } else if (hus_ting2 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting2 === "PS4") {
+                PS4++;
+            } else if (hus_ting2 === "PS5") {
+                PS5++;
+            } else if (hus_ting2 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting2 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting2 === "Gaming PC") {
+                GamingPC++;
+            }
+            if (hus_ting3 === "TV") {
+                TV++;
+            } else if (hus_ting3 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting3 === "Dress") {
+                Dress++;
+            } else if (hus_ting3 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting3 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting3 === "PC") {
+                PC++;
+            } else if (hus_ting3 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting3 === "PS4") {
+                PS4++;
+            } else if (hus_ting3 === "PS5") {
+                PS5++;
+            } else if (hus_ting3 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting3 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting3 === "Gaming PC") {
+                GamingPC++;
+            }
+
+        } else if (antall_ting === 4) {
+            document.getElementById("mld01").innerHTML = "<b>" + hus_ting1 + "</b>";
+            document.getElementById("mld02").innerHTML = "<b>" + hus_ting2 + "</b>";
+            document.getElementById("mld03").innerHTML = "<b>" + hus_ting3 + "</b>";
+            document.getElementById("mld04").innerHTML = "<b>" + hus_ting4 + "</b>";
+
+            if (hus_ting1 === "TV") {
+                TV++;
+            } else if (hus_ting1 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting1 === "Dress") {
+                Dress++;
+            } else if (hus_ting1 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting1 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting1 === "PC") {
+                PC++;
+            } else if (hus_ting1 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting1 === "PS4") {
+                PS4++;
+            } else if (hus_ting1 === "PS5") {
+                PS5++;
+            } else if (hus_ting1 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting1 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting1 === "Gaming PC") {
+                GamingPC++;
+            }
+            if (hus_ting2 === "TV") {
+                TV++;
+            } else if (hus_ting2 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting2 === "Dress") {
+                Dress++;
+            } else if (hus_ting2 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting2 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting2 === "PC") {
+                PC++;
+            } else if (hus_ting2 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting2 === "PS4") {
+                PS4++;
+            } else if (hus_ting2 === "PS5") {
+                PS5++;
+            } else if (hus_ting2 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting2 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting2 === "Gaming PC") {
+                GamingPC++;
+            }
+            if (hus_ting3 === "TV") {
+                TV++;
+            } else if (hus_ting3 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting3 === "Dress") {
+                Dress++;
+            } else if (hus_ting3 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting3 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting3 === "PC") {
+                PC++;
+            } else if (hus_ting3 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting3 === "PS4") {
+                PS4++;
+            } else if (hus_ting3 === "PS5") {
+                PS5++;
+            } else if (hus_ting3 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting3 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting3 === "Gaming PC") {
+                GamingPC++;
+            }
+            if (hus_ting4 === "TV") {
+                TV++;
+            } else if (hus_ting4 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting4 === "Dress") {
+                Dress++;
+            } else if (hus_ting4 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting4 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting4 === "PC") {
+                PC++;
+            } else if (hus_ting4 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting4 === "PS4") {
+                PS4++;
+            } else if (hus_ting4 === "PS5") {
+                PS5++;
+            } else if (hus_ting4 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting4 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting4 === "Gaming PC") {
+                GamingPC++;
+            }
+
+        } else if (antall_ting === 5) {
+            document.getElementById("mld01").innerHTML = "<b>" + hus_ting1 + "</b>";
+            document.getElementById("mld02").innerHTML = "<b>" + hus_ting2 + "</b>";
+            document.getElementById("mld03").innerHTML = "<b>" + hus_ting3 + "</b>";
+            document.getElementById("mld04").innerHTML = "<b>" + hus_ting4 + "</b>";
+            document.getElementById("mld05").innerHTML = "<b>" + hus_ting5 + "</b>";
+
+            if (hus_ting1 === "TV") {
+                TV++;
+            } else if (hus_ting1 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting1 === "Dress") {
+                Dress++;
+            } else if (hus_ting1 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting1 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting1 === "PC") {
+                PC++;
+            } else if (hus_ting1 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting1 === "PS4") {
+                PS4++;
+            } else if (hus_ting1 === "PS5") {
+                PS5++;
+            } else if (hus_ting1 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting1 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting1 === "Gaming PC") {
+                GamingPC++;
+            }
+            if (hus_ting2 === "TV") {
+                TV++;
+            } else if (hus_ting2 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting2 === "Dress") {
+                Dress++;
+            } else if (hus_ting2 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting2 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting2 === "PC") {
+                PC++;
+            } else if (hus_ting2 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting2 === "PS4") {
+                PS4++;
+            } else if (hus_ting2 === "PS5") {
+                PS5++;
+            } else if (hus_ting2 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting2 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting2 === "Gaming PC") {
+                GamingPC++;
+            }
+            if (hus_ting3 === "TV") {
+                TV++;
+            } else if (hus_ting3 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting3 === "Dress") {
+                Dress++;
+            } else if (hus_ting3 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting3 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting3 === "PC") {
+                PC++;
+            } else if (hus_ting3 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting3 === "PS4") {
+                PS4++;
+            } else if (hus_ting3 === "PS5") {
+                PS5++;
+            } else if (hus_ting3 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting3 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting3 === "Gaming PC") {
+                GamingPC++;
+            }
+            if (hus_ting4 === "TV") {
+                TV++;
+            } else if (hus_ting4 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting4 === "Dress") {
+                Dress++;
+            } else if (hus_ting4 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting4 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting4 === "PC") {
+                PC++;
+            } else if (hus_ting4 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting4 === "PS4") {
+                PS4++;
+            } else if (hus_ting4 === "PS5") {
+                PS5++;
+            } else if (hus_ting4 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting4 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting4 === "Gaming PC") {
+                GamingPC++;
+            }
+            if (hus_ting5 === "TV") {
+                TV++;
+            } else if (hus_ting5 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting5 === "Dress") {
+                Dress++;
+            } else if (hus_ting5 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting5 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting5 === "PC") {
+                PC++;
+            } else if (hus_ting5 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting5 === "PS4") {
+                PS4++;
+            } else if (hus_ting5 === "PS5") {
+                PS5++;
+            } else if (hus_ting5 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting5 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting5 === "Gaming PC") {
+                GamingPC++;
+            }
+
+        } else if (antall_ting === 6) {
+            document.getElementById("mld01").innerHTML = "<b>" + hus_ting1 + "</b>";
+            document.getElementById("mld02").innerHTML = "<b>" + hus_ting2 + "</b>";
+            document.getElementById("mld03").innerHTML = "<b>" + hus_ting3 + "</b>";
+            document.getElementById("mld04").innerHTML = "<b>" + hus_ting4 + "</b>";
+            document.getElementById("mld05").innerHTML = "<b>" + hus_ting5 + "</b>";
+            document.getElementById("mld06").innerHTML = "<b>" + hus_ting6 + "</b>";
+
+            if (hus_ting1 === "TV") {
+                TV++;
+            } else if (hus_ting1 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting1 === "Dress") {
+                Dress++;
+            } else if (hus_ting1 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting1 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting1 === "PC") {
+                PC++;
+            } else if (hus_ting1 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting1 === "PS4") {
+                PS4++;
+            } else if (hus_ting1 === "PS5") {
+                PS5++;
+            } else if (hus_ting1 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting1 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting1 === "Gaming PC") {
+                GamingPC++;
+            }
+            if (hus_ting2 === "TV") {
+                TV++;
+            } else if (hus_ting2 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting2 === "Dress") {
+                Dress++;
+            } else if (hus_ting2 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting2 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting2 === "PC") {
+                PC++;
+            } else if (hus_ting2 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting2 === "PS4") {
+                PS4++;
+            } else if (hus_ting2 === "PS5") {
+                PS5++;
+            } else if (hus_ting2 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting2 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting2 === "Gaming PC") {
+                GamingPC++;
+            }
+            if (hus_ting3 === "TV") {
+                TV++;
+            } else if (hus_ting3 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting3 === "Dress") {
+                Dress++;
+            } else if (hus_ting3 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting3 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting3 === "PC") {
+                PC++;
+            } else if (hus_ting3 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting3 === "PS4") {
+                PS4++;
+            } else if (hus_ting3 === "PS5") {
+                PS5++;
+            } else if (hus_ting3 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting3 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting3 === "Gaming PC") {
+                GamingPC++;
+            }
+            if (hus_ting4 === "TV") {
+                TV++;
+            } else if (hus_ting4 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting4 === "Dress") {
+                Dress++;
+            } else if (hus_ting4 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting4 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting4 === "PC") {
+                PC++;
+            } else if (hus_ting4 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting4 === "PS4") {
+                PS4++;
+            } else if (hus_ting4 === "PS5") {
+                PS5++;
+            } else if (hus_ting4 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting4 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting4 === "Gaming PC") {
+                GamingPC++;
+            }
+            if (hus_ting5 === "TV") {
+                TV++;
+            } else if (hus_ting5 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting5 === "Dress") {
+                Dress++;
+            } else if (hus_ting5 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting5 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting5 === "PC") {
+                PC++;
+            } else if (hus_ting5 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting5 === "PS4") {
+                PS4++;
+            } else if (hus_ting5 === "PS5") {
+                PS5++;
+            } else if (hus_ting5 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting5 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting5 === "Gaming PC") {
+                GamingPC++;
+            }
+            if (hus_ting6 === "TV") {
+                TV++;
+            } else if (hus_ting6 === "Alarmsystem") {
+                Alarmsystem++;
+            } else if (hus_ting6 === "Dress") {
+                Dress++;
+            } else if (hus_ting6 === "Gitar samling") {
+                Gitarsamling++;
+            } else if (hus_ting6 === "Laptop") {
+                Laptop++;
+            } else if (hus_ting6 === "PC") {
+                PC++;
+            } else if (hus_ting6 === "Radiostyrt bil") {
+                Radiostyrtbil++;
+            } else if (hus_ting6 === "PS4") {
+                PS4++;
+            } else if (hus_ting6 === "PS5") {
+                PS5++;
+            } else if (hus_ting6 === "Xbox One") {
+                XboxOne++;
+            } else if (hus_ting6 === "Xbox 360") {
+                Xbox360++;
+            } else if (hus_ting6 === "Gaming PC") {
+                GamingPC++;
+            }
+
+        } else {
+            document.write = "Error"
+        }
+
+    } else {
+        document.getElementById("info00").innerHTML = "<h1 class='text-center'>Du klarte det ikke</h1><br><p class='text-center' id='mld'></p><p class='text-center' id='mld2'></p>";
+        document.getElementById("mld").innerHTML = "Du klarte ikke å rane: <b>" + randnavn + "</b>"
+        document.getElementById("mld2").innerHTML = "På adressen: <b>" + adressa + "</b>"
+    }
+    hus_cd = 200;
+}
+
 function utfør_bil() {
     var bilpris = 0;
     if (random_bil === "Volvo 240 GL Turbo") {
@@ -229,7 +1039,7 @@ function utfør_bil() {
     document.getElementById("info01").innerHTML = "<p class='text-center' id='mld_bil'></p><p class='text-center' id='mld_bil00'></p>";
           if (bil_sjanse > bil_rand) {
             if (random_bil === "Volvo 240 GL Turbo") {
-                volvo240glturbo = volvo240glturbo + 1;
+                Volvo240glturbo = Volvo240glturbo + 1;
              } else if (random_bil === "Volvo 740") {
                  Volvo740 = Volvo740 + 1;
              } else if (random_bil === "Volvo 940") {
@@ -255,6 +1065,7 @@ function utfør_bil() {
             document.getElementById("mld_bil").innerHTML = "Du klarte ikke å stjele en: <br><br>" + random_bil;
           }
           bil_cd = 140;
+          load();
 }
 
 function randombil() {
@@ -263,7 +1074,6 @@ function randombil() {
 
     bil_sjanse = Math.floor(Math.random() * 20) + 1;
     bil_rand = Math.floor(Math.random() * 101);
-
     document.getElementById("bil-type").innerHTML = "Du har funnet en " + random_bil + "!";
     document.getElementById("bil_sjanse").innerHTML = bil_sjanse + "%";
 }
@@ -280,14 +1090,15 @@ function randombil0() {
 }
 
 function utfør_bil0() {
+    
     var bilpris = 0;
     if (random_bil === "Ferrari LaFerrari") {
        bilpris = FerrariLaFerrari_pris;
     } else if (random_bil === "Ferrari 612 Scaglietti") {
         bilpris = Ferrari612Scaglietti_pris;
-    } else if (random === "Lamborghini Diablo") {
+    } else if (random_bil === "Lamborghini Diablo") {
         bilpris = LamborghiniDiablo_pris;
-    } else if (random === "Chevrolet Corvette Z06") {
+    } else if (random_bil === "Chevrolet Corvette Z06") {
         bilpris = ChevroletCorvetteZ06_pris;
     }
 
@@ -295,35 +1106,21 @@ function utfør_bil0() {
     while (myNode.firstChild) {
             myNode.removeChild(myNode.lastChild);
           }
-    document.getElementById("info01").innerHTML = "<p class='text-center' id='mld_bil'></p><p class='text-center' id='mld_bil00'></p>";
+          document.getElementById("info01").innerHTML = "<p class='text-center' id='mld_bil'></p><p class='text-center' id='mld_bil00'></p>";
           if (bil_sjanse > bil_rand) {
             if (random_bil === "Ferrari LaFerrari") {
                 FerrariLaFerrari = FerrariLaFerrari + 1;
-             } else if (random_bil === "Volvo 740") {
-                 Volvo740 = Volvo740 + 1;
-             } else if (random_bil === "Volvo 940") {
-                 Volvo940 = Volvo940 + 1;
-             } else if (random_bil === "Volvo 240") {
-                 Volvo240 = Volvo240 + 1;
-             } else if (random_bil === "Toyota HiAce") {
-                 ToyotaHiAce = ToyotaHiAce + 1;
-             } else if (random_bil === "BMW E30") {
-                 BMWE30 = BMWE30 + 1;
-             } else if (random_bil === "Opel Kadett") {
-                 OpelKadett = OpelKadett + 1;
-             } else if (random_bil === "Opel Astra") {
-                 OpelAstra = OpelAstra + 1;
-             } else if (random_bil === "Ford Mondeo") {
-                 FordMondeo = FordMondeo + 1;
-             } else if (random_bil === "Volkswagen Up!") {
-                 VolkswagenUp = VolkswagenUp + 1;
+             } else if (random_bil === "Ferrari 612 Scaglietti") {
+                 ChevroletCorvetteZ06 = ChevroletCorvetteZ06 + 1;
              }
+
             document.getElementById("mld_bil").innerHTML = "Du klarte å stjele en: <br>" + random_bil;
             document.getElementById("mld_bil00").innerHTML = "Bilen er verdt: <br>" + bilpris;
           } else {
             document.getElementById("mld_bil").innerHTML = "Du klarte ikke å stjele en: <br><br>" + random_bil;
           }
           bil_cd = 140;
+          load();
 }
 
 function randomran() {
@@ -435,7 +1232,7 @@ function cooldown_bil(){
         while (myNode.firstChild) {
                 myNode.removeChild(myNode.lastChild);
               }
-        document.getElementById("info01").innerHTML = "<div class='d-flex flex-column justify-content-center align-items-center w-100 h-100'><p id='p_01'>Du har fortsett:</p> <br> <p class='text-center fs-3' id='countdown'></p> <br> <p id='p_01'>sekunder igjen.</p></div>"
+        document.getElementById("info01").innerHTML = "<div class='d-flex flex-column justify-content-center align-items-center w-100 h-100'><p id='p_01'>Du har fortsett:</p> <br> <p class='text-center fs-3' id='bil_cd'></p> <br> <p id='p_01'>sekunder igjen.</p></div>"
         var timer = setInterval(function(){
             if(bil_cd <= 0){
             clearInterval(timer);
@@ -443,7 +1240,25 @@ function cooldown_bil(){
             randombil()
             cooldown_bil()
             } else {
-              document.getElementById("countdown").innerHTML = bil_cd;
+              document.getElementById("bil_cd").innerHTML = bil_cd;
+            }
+          }, 1000);
+    }
+}
+function cooldown_hus(){
+    if (hus_cd > 0) {
+        var myNode = document.getElementById("info00");
+        while (myNode.firstChild) {
+                myNode.removeChild(myNode.lastChild);
+              }
+        document.getElementById("info00").innerHTML = "<div class='d-flex flex-column justify-content-center align-items-center w-100 h-100'><p id='p_01'>Du har fortsett:</p> <br> <p class='text-center fs-3' id='hus_cd'></p> <br> <p id='p_01'>sekunder igjen.</p></div>"
+        var timer = setInterval(function(){
+            if(hus_cd <= 0){
+            clearInterval(timer);
+            endre("privathus")
+            stjelprivathus()
+            } else {
+              document.getElementById("hus_cd").innerHTML = hus_cd;
             }
           }, 1000);
     }
@@ -456,22 +1271,88 @@ setInterval(function(){
     if (bil_cd > 0) {
         bil_cd = bil_cd - 1;
     }
+    if (hus_cd > 0) {
+        hus_cd = hus_cd - 1;
+    }
 }, 1000);
 
 
-var intervalId = window.setInterval(function(){
-    if (timeleft > 0) {
-        timeleft = timeleft - 1
-    } else {
-        clearInterval(intervalId) 
-    }
-    if (bil_cd > 0) {
-        bil_cd = bil_cd - 1;
-    } else {
-        clearInterval(intervalId)
-    }
-    savex();
-  }, 1000);
+
+
+
+function selg_biler() {
+    verdi_biler = Volvo240glturbo * volvo240glturbo_pris + Volvo740 * Volvo740_pris + Volvo940 * Volvo940_pris + Volvo240 * Volvo240_pris + ToyotaHiAce * ToyotaHiAce_pris + BMWE30 * BMWE30_pris + OpelKadett * OpelKadett_pris + OpelAstra * OpelAstra_pris + FordMondeo * FordMondeo_pris + VolkswagenUp * VolkswagenUp_pris + FerrariLaFerrari * FerrariLaFerrari_pris + Ferrari612Scaglietti * Ferrari612Scaglietti_pris + LamborghiniDiablo * LamborghiniDiablo_pris + ChevroletCorvetteZ06 * ChevroletCorvetteZ06_pris;
+    antall_biler = Volvo240glturbo + Volvo740 + Volvo940 + Volvo240 + ToyotaHiAce + BMWE30 + OpelKadett + OpelAstra + FordMondeo + VolkswagenUp + FerrariLaFerrari + Ferrari612Scaglietti + LamborghiniDiablo + ChevroletCorvetteZ06;
+    var myNode = document.getElementById("info");
+    while (myNode.firstChild) {
+            myNode.removeChild(myNode.lastChild);
+          }
+    document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Selg ting</h1><br><br><p class='text-center' id='solgte_biler'></p><p class='text-center' id='tjente_penger'></p><p class='text-center' id='littainfoo'></p></div>"
+
+    document.getElementById("solgte_biler").innerHTML = antall_biler + " stk"
+    document.getElementById("tjente_penger").innerHTML = verdi_biler + " kroner"
+    document.getElementById("littainfoo").innerHTML = "Du solgte " + antall_biler + " bil(er) og fikk " + verdi_biler + " kroner for de."
+
+    penger = penger + verdi_biler;
+    Volvo240glturbo = 0;
+    Volvo740 = 0;
+    Volvo940 = 0;
+    Volvo240 = 0;
+    ToyotaHiAce = 0;
+    BMWE30 = 0;
+    OpelKadett = 0;
+    OpelAstra = 0;
+    FordMondeo = 0;
+    VolkswagenUp = 0;
+    FerrariLaFerrari = 0;
+    Ferrari612Scaglietti = 0;
+    LamborghiniDiablo = 0;
+    ChevroletCorvetteZ06 = 0;
+    verdi_biler = Volvo240glturbo * volvo240glturbo_pris + Volvo740 * Volvo740_pris + Volvo940 * Volvo940_pris + Volvo240 * Volvo240_pris + ToyotaHiAce * ToyotaHiAce_pris + BMWE30 * BMWE30_pris + OpelKadett * OpelKadett_pris + OpelAstra * OpelAstra_pris + FordMondeo * FordMondeo_pris + VolkswagenUp * VolkswagenUp_pris + FerrariLaFerrari * FerrariLaFerrari_pris + Ferrari612Scaglietti * Ferrari612Scaglietti_pris + LamborghiniDiablo * LamborghiniDiablo_pris + ChevroletCorvetteZ06 * ChevroletCorvetteZ06_pris;
+    antall_biler = Volvo240glturbo + Volvo740 + Volvo940 + Volvo240 + ToyotaHiAce + BMWE30 + OpelKadett + OpelAstra + FordMondeo + VolkswagenUp + FerrariLaFerrari + Ferrari612Scaglietti + LamborghiniDiablo + ChevroletCorvetteZ06;
+
+    document.getElementById("pengsjit").innerHTML = "<i class='fas fa-coins fa-fw'></i> Penger: " + penger;
+}
+
+function selg_ting() {
+    tinga_verdig = TV * TV_pris + Alarmsystem * Alarmsystem_pris + Dress * Dress_pris + Gitarsamling * Gitarsamling_pris + Laptop * Laptop_pris + PC * PC_pris + Radiostyrtbil * Radiostyrtbil_pris + PS4 * PS4_pris + PS5 * PS5_pris + XboxOne * XboxOne_pris + Xbox360 * Xbox360_pris + GamingPC * GamingPC_pris + Effektanlegg * Effektanlegg_pris + Stereoanlegg * Stereoanlegg_pris + Gressklipper * Gressklipper_pris + Turbo * Turbo_pris + Anlegg * Anlegg_pris + Motorsag * Motorsag_pris;
+    antall_tinga = TV + Alarmsystem + Dress + Gitarsamling + Laptop + PC + Radiostyrtbil + PS4 + PS5 + XboxOne + Xbox360 + GamingPC + Effektanlegg + Stereoanlegg + Gressklipper + Turbo + Anlegg + Motorsag;
+    var myNode = document.getElementById("info");
+    while (myNode.firstChild) {
+            myNode.removeChild(myNode.lastChild);
+          }
+    document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Selg ting</h1><br><br><p class='text-center' id='solgte_biler'></p><p class='text-center' id='tjente_penger'></p><p class='text-center' id='littainfoo'></p></div>"
+
+    document.getElementById("solgte_biler").innerHTML = antall_tinga + " stk"
+    document.getElementById("tjente_penger").innerHTML = tinga_verdig + " kroner"
+    document.getElementById("littainfoo").innerHTML = "Du solgte " + antall_tinga + " ting og fikk " + tinga_verdig + " kroner for de."
+
+    penger = penger + tinga_verdig
+    TV = 0;
+    Alarmsystem = 0;
+    Dress = 0;
+    Gitarsamling = 0;
+    Laptop = 0;
+    PC = 0;
+    Radiostyrtbil = 0;
+    PS4 = 0;
+    PS5 = 0;
+    XboxOne = 0;
+    Xbox360 = 0;
+    GamingPC = 0;
+    Effektanlegg = 0;
+    Stereoanlegg = 0;
+    Gressklipper = 0;
+    Turbo = 0;
+    Anlegg = 0;
+    Motorsag = 0;
+    tinga_verdig = TV * TV_pris + Alarmsystem * Alarmsystem_pris + Dress * Dress_pris + Gitarsamling * Gitarsamling_pris + Laptop * Laptop_pris + PC * PC_pris + Radiostyrtbil * Radiostyrtbil_pris + PS4 * PS4_pris + PS5 * PS5_pris + XboxOne * XboxOne_pris + Xbox360 * Xbox360_pris + GamingPC * GamingPC_pris + Effektanlegg * Effektanlegg_pris + Stereoanlegg * Stereoanlegg_pris + Gressklipper * Gressklipper_pris + Turbo * Turbo_pris + Anlegg * Anlegg_pris + Motorsag * Motorsag_pris;
+    antall_tinga = TV + Alarmsystem + Dress + Gitarsamling + Laptop + PC + Radiostyrtbil + PS4 + PS5 + XboxOne + Xbox360 + GamingPC + Effektanlegg + Stereoanlegg + Gressklipper + Turbo + Anlegg + Motorsag;
+    document.getElementById("pengsjit").innerHTML = "<i class='fas fa-coins fa-fw'></i> Penger: " + penger;
+}
+
+
+
 
 function endre(type) {
     if (type === "ran_privat") {
@@ -485,7 +1366,7 @@ function endre(type) {
         while (myNode.firstChild) {
                 myNode.removeChild(myNode.lastChild);
               }
-        document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><div><h1 class='text-center'>Hovedkvarter</h1></div></div>"
+        document.getElementById("info").innerHTML = "<div id='info00' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Hovedkvarter</h1><div id='littinfo' class='w-100 align-self-center'><p class='text-center fs-4'><b>Biler</b></p><div class='litta align-self-center'><p class='text-center gg' id='bila_verdi'></p><p class='text-center gg' id='bila_antall'></p></div><br><p class='text-center fs-4'><b>Ting</b></p><div class='litta align-self-center'><p class='text-center gg' id='tinga_verdi'></p><p class='text-center gg' id='tinga_antall'></p></div><br><p class='text-center fs-4'><b>Narkotika</b></p><div class='litta align-self-center'><p class='text-center gg' id='narko_verdi'></p><p class='text-center gg' id='narko_antall'></p></div></div></div>"
     } else if (type === "offentlig_ran") {
         var myNode = document.getElementById("info");
         while (myNode.firstChild) {
@@ -503,18 +1384,40 @@ function endre(type) {
         while (myNode.firstChild) {
                 myNode.removeChild(myNode.lastChild);
               }
-        document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Stjel en bil fra en offentlig person</h1><div id='idkxd' class='w-100 align-self-center d-flex align-items-center justify-content-center flex-column'><p class='text-center fs-4 text' id='bil-type'></p><p class='text-center fs-4 text' id='bil_sjanse'></p></div><button onclick='nytt_bil0()' id='finn_bil' type='button' class='btn btn-secondary w-50 align-self-center'>Finn en ny bil - 10 000kr</button><p id='finn_ny_bil' class='text-center'></p><button onclick='utfør_bil0()()' id='utført_bil' type='button' class='btn btn-secondary w-50 align-self-center align-text-bottom mt-auto'>Utfør ran</button></div>"
+        document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Stjel en bil fra en offentlig person</h1><div id='idkxd' class='w-100 align-self-center d-flex align-items-center justify-content-center flex-column'><p class='text-center fs-4 text' id='bil-type'></p><p class='text-center fs-4 text' id='bil_sjanse'></p></div><button onclick='nytt_bil0()' id='finn_bil' type='button' class='btn btn-secondary w-50 align-self-center'>Finn en ny bil - 10 000kr</button><p id='finn_ny_bil' class='text-center'></p><button onclick='utfør_bil0()' id='utført_bil' type='button' class='btn btn-secondary w-50 align-self-center align-text-bottom mt-auto'>Utfør ran</button></div>"
     } else if (type === "selg_biler") {
         var myNode = document.getElementById("info");
         while (myNode.firstChild) {
                 myNode.removeChild(myNode.lastChild);
               }
-        document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Dine biler</h1><ul class='list-group overflow-auto'><li class='list-group-item d-flex justify-content-between align-items-center'>Volvo 240 GL Turbo<span id='volvo240glturbo' class='badge bg-primary rounded-pill'></span></li><li class='list-group-item d-flex justify-content-between align-items-center'>Volvo 740<span id='volvo740' class='badge bg-primary rounded-pill'></span></li><span id='volvo740' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Volvo 940 <span id='volvo940' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Volvo 240 <span id='volvo240' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Toyota HiAce <span id='toyotahiace' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> BMW E30 <span id='bmwe30' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Opel Kadett <span id='opelkadett' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Opel Astra <span id='opelastra' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Ford Mondeo <span id='fordmondeo' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Volkswagen Up! <span id='volkswagenup' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Ferrari LaFerrari <span id='ferrarilaferrari' class='badge bg-danger rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Ferrari 612 Scaglietti <span id='ferrari612scaglietti' class='badge bg-danger rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Lamborghini Diablo <span id='lamborghinidablo' class='badge bg-danger rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Chevrolet Corvette Z06 <span id='chevroletcorvettez06' class='badge bg-danger rounded-pill'></span> </li> </ul> <button class='btn btn-primary' type='button' onclick='endre('selg_biler')'>Selg biler</button> </div>"
+        document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Dine biler</h1><ul class='list-group overflow-auto'><li class='list-group-item d-flex justify-content-between align-items-center'>Volvo 240 GL Turbo<span id='volvo240glturbo' class='badge bg-primary rounded-pill'></span></li><li class='list-group-item d-flex justify-content-between align-items-center'>Volvo 740<span id='volvo740' class='badge bg-primary rounded-pill'></span></li><span id='volvo740' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Volvo 940 <span id='volvo940' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Volvo 240 <span id='volvo240' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Toyota HiAce <span id='toyotahiace' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> BMW E30 <span id='bmwe30' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Opel Kadett <span id='opelkadett' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Opel Astra <span id='opelastra' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Ford Mondeo <span id='fordmondeo' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Volkswagen Up! <span id='volkswagenup' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Ferrari LaFerrari <span id='ferrarilaferrari' class='badge bg-danger rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Ferrari 612 Scaglietti <span id='ferrari612scaglietti' class='badge bg-danger rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Lamborghini Diablo <span id='lamborghinidablo' class='badge bg-danger rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'> Chevrolet Corvette Z06 <span id='chevroletcorvettez06' class='badge bg-danger rounded-pill'></span> </li> </ul> <button onclick='selg_biler()' class='btn btn-primary' type='button'>Selg biler</button> </div>"
+    } else if (type === "privathus") {
+        var myNode = document.getElementById("info");
+        while (myNode.firstChild) {
+                myNode.removeChild(myNode.lastChild);
+              }
+        document.getElementById("info").innerHTML = "<div id='info00' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Bryt deg inn i et hus</h1><p class='text-center' id='person'></p><p class='text-center' id='adresse'></p><p class='text-center' id='gataa'></p><p class='text-center' id='sjansaa'></p><p class='text-center' id='natt/dag'></p><br><br><button onclick='stjelprivathus_nytt()' type='button' class='btn btn-secondary w-50 align-self-center'>Finn et nytt hus - pris: 1 000kr</button><p class='text-center' id='ny_mld'></p><br><button onclick='utfør_privathus()' type='button' class='btn btn-secondary w-50 align-self-center'>Utfør ran</button></div>"
+    } else if (type === "selg_ting") {
+        var myNode = document.getElementById("info");
+        while (myNode.firstChild) {
+                myNode.removeChild(myNode.lastChild);
+              }
+        document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Dine biler</h1><ul class='list-group overflow-auto'><li class='list-group-item d-flex justify-content-between align-items-center'>TV<span id='tv' class='badge bg-primary rounded-pill'></span></li><li class='list-group-item d-flex justify-content-between align-items-center'>Alarmsystem<span id='alarmsystem' class='badge bg-primary rounded-pill'></span></li><li class='list-group-item d-flex justify-content-between align-items-center'>Dress<span id='dress' class='badge bg-primary rounded-pill'></span></li><li class='list-group-item d-flex justify-content-between align-items-center'>Gitarsamling<span id='gitarsamling' class='badge bg-primary rounded-pill'></span> </li><li class='list-group-item d-flex justify-content-between align-items-center'>Laptop<span id='laptop' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>PC<span id='pc' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Radiostyrtbil<span id='radiostyrtbil' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>PS4<span id='ps4' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>PS5<span id='ps5' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Xbox One<span id='xboxone' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Xbox 360<span id='xbox360' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Gaming PC<span id='gamingpc' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Effektanlegg<span id='effektanlegg' class='badge bg-danger rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Stereoanlegg<span id='stereoanlegg' class='badge bg-danger rounded-pill'></span> </li><li class='list-group-item d-flex justify-content-between align-items-center'>Gressklipper<span id='gressklipper' class='badge bg-danger rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Turbo<span id='turbo' class='badge bg-danger rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Anlegg<span id='anlegg' class='badge bg-danger rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Motorsag<span id='motorsag' class='badge bg-danger rounded-pill'></span> </li> </ul><button onclick='selg_ting()' class='btn btn-primary' type='button'>Selg ting</button> </div>"
     }
 }
 
 function load() {
+
+    verdi_biler = Volvo240glturbo * volvo240glturbo_pris + Volvo740 * Volvo740_pris + Volvo940 * Volvo940_pris + Volvo240 * Volvo240_pris + ToyotaHiAce * ToyotaHiAce_pris + BMWE30 * BMWE30_pris + OpelKadett * OpelKadett_pris + OpelAstra * OpelAstra_pris + FordMondeo * FordMondeo_pris + VolkswagenUp * VolkswagenUp_pris + FerrariLaFerrari * FerrariLaFerrari_pris + Ferrari612Scaglietti * Ferrari612Scaglietti_pris + LamborghiniDiablo * LamborghiniDiablo_pris + ChevroletCorvetteZ06 * ChevroletCorvetteZ06_pris;
+    antall_biler = Volvo240glturbo + Volvo740 + Volvo940 + Volvo240 + ToyotaHiAce + BMWE30 + OpelKadett + OpelAstra + FordMondeo + VolkswagenUp + FerrariLaFerrari + Ferrari612Scaglietti + LamborghiniDiablo + ChevroletCorvetteZ06;
+    antall_tinga = TV + Alarmsystem + Dress + Gitarsamling + Laptop + PC + Radiostyrtbil + PS4 + PS5 + XboxOne + Xbox360 + GamingPC + Effektanlegg + Stereoanlegg + Gressklipper + Turbo + Anlegg + Motorsag;
+    tinga_verdig = TV * TV_pris + Alarmsystem * Alarmsystem_pris + Dress * Dress_pris + Gitarsamling * Gitarsamling_pris + Laptop * Laptop_pris + PC * PC_pris + Radiostyrtbil * Radiostyrtbil_pris + PS4 * PS4_pris + PS5 * PS5_pris + XboxOne * XboxOne_pris + Xbox360 * Xbox360_pris + GamingPC * GamingPC_pris + Effektanlegg * Effektanlegg_pris + Stereoanlegg * Stereoanlegg_pris + Gressklipper * Gressklipper_pris + Turbo * Turbo_pris + Anlegg * Anlegg_pris + Motorsag * Motorsag_pris;
+
     document.getElementById("pengsjit").innerHTML = "<i class='fas fa-coins fa-fw'></i> Penger: " + penger;
+    document.getElementById("bila_verdi").innerHTML = verdi_biler + " kroner"
+    document.getElementById("bila_antall").innerHTML = antall_biler + " stk"
+    document.getElementById("tinga_antall").innerHTML = antall_tinga + " stk"
+    document.getElementById("tinga_verdi").innerHTML = tinga_verdig + " kroner"
 }
 
 function offentlig_ran() {
@@ -543,7 +1446,10 @@ function nytt_offentlig() {
     }
 }
 
+// Finn en ny bil hvis bruker ikke er fornøyd med bilen han/hun fant, dette er biler fra en privat person. Koster 1 000.
 function nytt_bil() {
+    // Hvis brukeren ikke har nok penger skriver den ut en error, hvis den har nokker trekker den fra
+    // og skriver ut de nye pengene og deretter kjører funksjonen på nytt som finner en ny bil.
     if (penger >= 1000) {
         penger = penger - 1000;
         document.getElementById("pengsjit").innerHTML = "<i class='fas fa-coins fa-fw'></i> Penger: " + penger;
@@ -552,8 +1458,13 @@ function nytt_bil() {
         document.getElementById("finn_ny_bil").innerHTML = "Du har ikke nok penger!"
     }
 }
+// Finn en ny bil hvis bruker ikke er fornøyd med bilen han/hun fant, dette er biler fra en privat person. Koster 1 000.
 
+
+// Finn en ny bil hvis bruker ikke er fornøyd med bilen han/hun fant, dette er biler fra en offentlig person. Koster 10 000.
 function nytt_bil0() {
+    // Hvis bruker ikke har nok penger, så skriver den ut "Du har ikke nok penger!", hvis bruker har nok
+    // penger, trekker den fra pengene og skriver ut de nye pengene i sidebar, også laster den siden på nytt.
     if (penger >= 10000) {
         penger = penger - 10000;
         document.getElementById("pengsjit").innerHTML = "<i class='fas fa-coins fa-fw'></i> Penger: " + penger;
@@ -562,7 +1473,10 @@ function nytt_bil0() {
         document.getElementById("finn_ny_bil").innerHTML = "Du har ikke nok penger!"
     }
 }
+// Finn en ny bil hvis bruker ikke er fornøyd med bilen han/hun fant. Koster 10 000.
 
+
+// Skriver ut alle bilene til brukeren og antall biler når man trykker på "biler" på sidebar.
 function dinebiler() {
     document.getElementById("volvo240glturbo").innerHTML = Volvo240glturbo;
     document.getElementById("volvo740").innerHTML = Volvo740;
@@ -579,9 +1493,33 @@ function dinebiler() {
     document.getElementById("lamborghinidablo").innerHTML = LamborghiniDiablo;
     document.getElementById("chevroletcorvettez06").innerHTML = ChevroletCorvetteZ06;
 }
+// Skriver ut alle bilene til brukeren og antall biler når man trykker på "biler" på sidebar.
+
+function dineting() {
+    document.getElementById("tv").innerHTML = TV;
+    document.getElementById("alarmsystem").innerHTML = Alarmsystem;
+    document.getElementById("dress").innerHTML = Dress;
+    document.getElementById("gitarsamling").innerHTML = Gitarsamling;
+    document.getElementById("laptop").innerHTML = Laptop;
+    document.getElementById("pc").innerHTML = PC;
+    document.getElementById("radiostyrtbil").innerHTML = Radiostyrtbil;
+    document.getElementById("ps4").innerHTML = PS4;
+    document.getElementById("ps5").innerHTML = PS5;
+    document.getElementById("xboxone").innerHTML = XboxOne;
+    document.getElementById("xbox360").innerHTML = Xbox360;
+    document.getElementById("gamingpc").innerHTML = GamingPC;
+    document.getElementById("effektanlegg").innerHTML = Effektanlegg;
+    document.getElementById("stereoanlegg").innerHTML = Stereoanlegg;
+    document.getElementById("gressklipper").innerHTML = Gressklipper;
+    document.getElementById("turbo").innerHTML = Turbo;
+    document.getElementById("anlegg").innerHTML = Anlegg;
+    document.getElementById("motorsag").innerHTML = Motorsag; 
+}
+
+
 //APP
 
-//NAVBAR
+//NAVBAR - ikke min kode
 document.querySelectorAll('.dropdown-toggle').forEach(item => {
     item.addEventListener('click', event => {
    

@@ -61,7 +61,10 @@ body {
 
 #info {
   min-height: 100%;
-  padding-top: 5%;
+  background-image: url("../../media/mafia.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding-top: 2%;
 }
 
 #div-innpakning {
@@ -98,7 +101,6 @@ body {
 }
 
 .gg {
-  margin-top: 50px;
   margin-left: 50px;
   margin-right: 50px;
 }
