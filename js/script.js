@@ -3,7 +3,7 @@ var utført = false;
 var sjanse = 0;
 var timeleft = 0;
 var rand_tall = rand_tall = Math.floor(Math.random() * 101) + 1;
-var penger = 0;
+var penger = 99999999;
 var penge_nivå = 0;
 var reward = 0;
 var randnavn = "";
@@ -19,7 +19,33 @@ var adressa = 0;
 var hus_cd = 0;
 var antall_tinga = 0;
 var tinga_verdig = 0;
+var antall_ting = 0;
 // Variabler
+
+// Narkotika
+var Kokain = 0;
+var Kokain_gram = 0;
+var Hasj = 0;
+var Hasj_gram = 0;
+var Amfetamin = 0;
+var Amfetamin_gram = 0;
+var Xanax = 0;
+var Xanax_piller = 0;
+var Molly = 0;
+var Molly_gram = 0;
+var cola = 0;
+var weed = 0;
+var amf = 0;
+var xan = 0;
+var molly = 0;
+// Priser
+var pris_kokain = 200000;
+var pris_hasj = 75000;
+var pris_amfetamin = 100000;
+var pris_xanax = 3000;
+var pris_molly = 250000;
+// Narkotika
+
 
 // Biler
 var Volvo240glturbo = 0;
@@ -140,7 +166,7 @@ const traphouse = [
     "Kokain",
     "Hasj",
     "Amfetamin",
-    "Benzo",
+    "Xanax",
     "Molly"
 ];
 const random_fornavn = [
@@ -239,9 +265,215 @@ tullebukk = nytt_offentlig.length;
 tullebukk = nytt_bil.length;
 tullebukk = nytt_bil0.length;
 tullebukk = dinebiler.length;
+tullebukk = kjøp_kokain.length;
+// Midlertidlig løsning
 // Variabler for funksjoner global
 
 // Funksjoner
+function selge(type) {
+    if (type === "klubben") {
+        console.log("klubben")
+    } else if (type === "amfi") {
+        console.log("amfi")
+    } else if (type === "rema") {
+        console.log("rema")
+    } else if (type === "tunet") {
+        console.log("tunet")
+    }
+}
+
+
+function kjøp(type) {
+    if (type === "kokain") {
+        document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Kjøp Kokain</h1><br><p class='text-center' id='pris'></p><br><p class='text-center'>Hvor mange plater vil du kjøpe?</p><div class='quantity-field' ><button class='value-button decrease-button' onclick='decreaseValue(this)' title='Azalt'>-</button><div class='number'>0</div><button class='value-button increase-button' onclick='increaseValue(this, 100)'title='Arrtır'>+</button></div><button onclick='kjøp_kokain()' id='colaa' type='button' class='btn btn-secondary w-50 align-self-center'>Kjøp kokain</button><br><p class='text-center' id='cola'></p></div>"
+        document.getElementById("pris").innerHTML = "Prisen på kokain er for øyeblikket: <b>" + pris_kokain + "</b> per plate (100 gram)"
+    }
+    if (type === "hasj") {
+        document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Kjøp Hasj</h1><br><p class='text-center' id='pris'></p><br><p class='text-center'>Hvor mange plater vil du kjøpe?</p><div class='quantity-field' ><button class='value-button decrease-button' onclick='decreaseValueh(this)' title='Azalt'>-</button><div class='number'>0</div><button class='value-button increase-button' onclick='increaseValueh(this, 100)'title='Arrtır'>+</button></div><button onclick='kjøp_hasj()' id='hasj' type='button' class='btn btn-secondary w-50 align-self-center'>Kjøp hasj</button><br><p class='text-center' id='cola'></p></div>"
+        document.getElementById("pris").innerHTML = "Prisen på hasj er for øyeblikket: <b>" + pris_hasj + "</b> per plate (100 gram)"
+    }
+    if (type === "amfetamin") {
+        document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Kjøp Amfetamin</h1><br><p class='text-center' id='pris'></p><br><p class='text-center'>Hvor mange plater vil du kjøpe?</p><div class='quantity-field' ><button class='value-button decrease-button' onclick='decreaseValuea(this)' title='Azalt'>-</button><div class='number'>0</div><button class='value-button increase-button' onclick='increaseValuea(this, 100)'title='Arrtır'>+</button></div><button onclick='kjøp_amfetamin()' id='amf' type='button' class='btn btn-secondary w-50 align-self-center'>Kjøp amfetamin</button><br><p class='text-center' id='cola'></p></div>"
+        document.getElementById("pris").innerHTML = "Prisen på amfetamin er for øyeblikket: <b>" + pris_amfetamin + "</b> per plate (100 gram)"
+    }
+    if (type === "benzo") {
+        document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Kjøp Benzo</h1><br><p class='text-center' id='pris'></p><br><p class='text-center'>Hvor mange plater vil du kjøpe?</p><div class='quantity-field' ><button class='value-button decrease-button' onclick='decreaseValuex(this)' title='Azalt'>-</button><div class='number'>0</div><button class='value-button increase-button' onclick='increaseValuex(this, 100)'title='Arrtır'>+</button></div><button onclick='kjøp_xanax()' id='xan' type='button' class='btn btn-secondary w-50 align-self-center'>Kjøp xanax</button><br><p class='text-center' id='cola'></p></div>"
+        document.getElementById("pris").innerHTML = "Prisen på xanax er for øyeblikket: <b>" + pris_xanax + "</b> per boks (100 piller)"
+    }
+    if (type === "molly") {
+        document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Kjøp Molly</h1><br><p class='text-center' id='pris'></p><br><p class='text-center'>Hvor mange plater vil du kjøpe?</p><div class='quantity-field' ><button class='value-button decrease-button' onclick='decreaseValuem(this)' title='Azalt'>-</button><div class='number'>0</div><button class='value-button increase-button' onclick='increaseValuem(this, 100)'title='Arrtır'>+</button></div><button onclick='kjøp_molly()' id='molly' type='button' class='btn btn-secondary w-50 align-self-center'>Kjøp molly</button><br><p class='text-center' id='cola'></p></div>"
+        document.getElementById("pris").innerHTML = "Prisen på molly er for øyeblikket: <b>" + pris_molly + "</b> per stein (100 gram)"
+    }
+}
+
+function kjøp_kokain() {
+    if (penger >= pris_kokain * cola) {
+        penger = penger - pris_kokain * cola;
+        document.getElementById("pengsjit").innerHTML = "<i class='fas fa-coins fa-fw'></i> Penger: " + penger;
+        document.getElementById("cola").innerHTML = "Du kjøpte <b>" + cola + "</b> plater med kokain for <b>" + pris_kokain * cola + "</b>."
+        Kokain = Kokain + cola
+        Kokain_gram = Kokain * 100;
+    } else {
+        document.getElementById("cola").innerHTML = "Du har ikke nok penger."
+    }
+}
+function kjøp_hasj() {
+    if (penger >= pris_hasj * weed) {
+        penger = penger - pris_hasj * weed;
+        document.getElementById("pengsjit").innerHTML = "<i class='fas fa-coins fa-fw'></i> Penger: " + penger;
+        document.getElementById("cola").innerHTML = "Du kjøpte <b>" + weed + "</b> plater med hasj for <b>" + pris_hasj * weed + "</b>."
+        Hasj = Hasj + cola
+        Hasj_gram = Hasj * 100;
+    } else {
+        document.getElementById("cola").innerHTML = "Du har ikke nok penger."
+    }
+}
+function kjøp_amfetamin() {
+    if (penger >= pris_amfetamin * amf) {
+        penger = penger - pris_amfetamin * amf;
+        document.getElementById("pengsjit").innerHTML = "<i class='fas fa-coins fa-fw'></i> Penger: " + penger;
+        document.getElementById("cola").innerHTML = "Du kjøpte <b>" + amf + "</b> plater med amfetamin for <b>" + pris_amfetamin * amf + "</b>."
+        Amfetamin = Amfetamin + amf;
+        Amfetamin_gram = Amfetamin * 100;
+    } else {
+        document.getElementById("cola").innerHTML = "Du har ikke nok penger."
+    }
+}
+function kjøp_xanax() {
+    if (penger >= pris_xanax * xan) {
+        penger = penger - pris_xanax * xan;
+        document.getElementById("pengsjit").innerHTML = "<i class='fas fa-coins fa-fw'></i> Penger: " + penger;
+        document.getElementById("cola").innerHTML = "Du kjøpte <b>" + xan + "</b> bokser med xanax for <b>" + pris_xanax * xan + "</b>."
+        Xanax = Xanax + xan;
+        Xanax_piller = Xanax * 100;
+    } else {
+        document.getElementById("cola").innerHTML = "Du har ikke nok penger."
+    }
+}
+function kjøp_molly() {
+    if (penger >= pris_molly * molly) {
+        penger = penger - pris_molly * molly;
+        document.getElementById("pengsjit").innerHTML = "<i class='fas fa-coins fa-fw'></i> Penger: " + penger;
+        document.getElementById("cola").innerHTML = "Du kjøpte <b>" + molly + "</b> stein(er) med molly for <b>" + pris_molly * molly + "</b>."
+        Molly = Molly + molly;
+        Molly_gram = Molly * 100;
+    } else {
+        document.getElementById("cola").innerHTML = "Du har ikke nok penger."
+    }
+}
+// Kopiert https://codepen.io/gknasln/pen/WNbQmLP og endret litt.
+// Kokain
+function increaseValue(button, limit) {
+    const numberInput = button.parentElement.querySelector('.number');
+    var value = parseInt(numberInput.innerHTML, 10);
+    if(isNaN(value)) value = 0;
+    if(limit && value >= limit) return;
+    numberInput.innerHTML = value+1;
+    cola++;
+    document.getElementById("cola").innerHTML = "Prisen blir: <b>" + pris_kokain * cola + "</b>"
+  }
+  
+  
+  function decreaseValue(button) {
+    const numberInput = button.parentElement.querySelector('.number');
+    var value = parseInt(numberInput.innerHTML, 10);
+    if(isNaN(value)) value = 0;  
+    if(value < 1) return;
+    numberInput.innerHTML = value-1;
+    cola--;
+    document.getElementById("cola").innerHTML = "Prisen blir: <b>" + pris_kokain * cola + "</b>"
+  }
+// Kokain
+// Hasj
+  function increaseValueh(button, limit, type) {
+    const numberInput = button.parentElement.querySelector('.number');
+    var value = parseInt(numberInput.innerHTML, 10);
+    if(isNaN(value)) value = 0;
+    if(limit && value >= limit) return;
+    numberInput.innerHTML = value+1;
+    weed++;
+    document.getElementById("cola").innerHTML = "Prisen blir: <b>" + pris_hasj * weed + "</b>"
+  }
+  
+  
+  function decreaseValueh(button) {
+    const numberInput = button.parentElement.querySelector('.number');
+    var value = parseInt(numberInput.innerHTML, 10);
+    if(isNaN(value)) value = 0;  
+    if(value < 1) return;
+    numberInput.innerHTML = value-1;
+    weed--;
+    document.getElementById("cola").innerHTML = "Prisen blir: <b>" + pris_hasj * weed + "</b>"
+  }
+// Hasj
+// Amfetamin
+  function increaseValuea(button, limit, type) {
+    const numberInput = button.parentElement.querySelector('.number');
+    var value = parseInt(numberInput.innerHTML, 10);
+    if(isNaN(value)) value = 0;
+    if(limit && value >= limit) return;
+    numberInput.innerHTML = value+1;
+    amf++;
+    document.getElementById("cola").innerHTML = "Prisen blir: <b>" + pris_amfetamin * amf + "</b>"
+  }
+  
+  
+  function decreaseValuea(button) {
+    const numberInput = button.parentElement.querySelector('.number');
+    var value = parseInt(numberInput.innerHTML, 10);
+    if(isNaN(value)) value = 0;  
+    if(value < 1) return;
+    numberInput.innerHTML = value-1;
+    amf--;
+    document.getElementById("cola").innerHTML = "Prisen blir: <b>" + pris_amfetamin * amf + "</b>"
+  }
+// Amfetamin
+// Xanax
+function increaseValuex(button, limit, type) {
+    const numberInput = button.parentElement.querySelector('.number');
+    var value = parseInt(numberInput.innerHTML, 10);
+    if(isNaN(value)) value = 0;
+    if(limit && value >= limit) return;
+    numberInput.innerHTML = value+1;
+    xan++;
+    document.getElementById("cola").innerHTML = "Prisen blir: <b>" + pris_xanax * xan + "</b>"
+  }
+  
+  
+  function decreaseValuex(button) {
+    const numberInput = button.parentElement.querySelector('.number');
+    var value = parseInt(numberInput.innerHTML, 10);
+    if(isNaN(value)) value = 0;  
+    if(value < 1) return;
+    numberInput.innerHTML = value-1;
+    xan--;
+    document.getElementById("cola").innerHTML = "Prisen blir: <b>" + pris_xanax * xan + "</b>"
+  }
+// Xanax
+// Molly
+  function increaseValuem(button, limit, type) {
+    const numberInput = button.parentElement.querySelector('.number');
+    var value = parseInt(numberInput.innerHTML, 10);
+    if(isNaN(value)) value = 0;
+    if(limit && value >= limit) return;
+    numberInput.innerHTML = value+1;
+    molly++;
+    document.getElementById("cola").innerHTML = "Prisen blir: <b>" + pris_molly * molly + "</b>"
+  }
+  
+  
+  function decreaseValuem(button) {
+    const numberInput = button.parentElement.querySelector('.number');
+    var value = parseInt(numberInput.innerHTML, 10);
+    if(isNaN(value)) value = 0;  
+    if(value < 1) return;
+    numberInput.innerHTML = value-1;
+    molly--;
+    document.getElementById("cola").innerHTML = "Prisen blir: <b>" + pris_molly * molly + "</b>"
+  }
+// Molly
+// Kopiert https://codepen.io/gknasln/pen/WNbQmLP og endret litt.
+
 function ran_biltema() {
     sjanse = Math.floor(Math.random() * (10 - 0 + 1) + 0)
     document.getElementById("sjanse").innerHTML = "Du har: <b>" + sjanse + "%</b> sjanse"
@@ -254,15 +486,15 @@ function utfør_biltema() {
             var hus1 = Math.floor(Math.random() * biltema.length);
             var hus2 = Math.floor(Math.random() * biltema.length);
             var hus3 = Math.floor(Math.random() * biltema.length);
-            var hus_ting1 = stjel_hus_privatperson[hus1];
-            var hus_ting2 = stjel_hus_privatperson[hus2];
-            var hus_ting3 = stjel_hus_privatperson[hus3];
+            var hus_ting1 = biltema[hus1];
+            var hus_ting2 = biltema[hus2];
+            var hus_ting3 = biltema[hus3];
             var pengaf = Math.floor(Math.random() * (70000 - 10000 + 1) + 10000)
             penger = penger + pengaf;
             document.getElementById("pengsjit").innerHTML = "<i class='fas fa-coins fa-fw'></i> Penger: " + penger;
 
     
-            var antall_ting = Math.floor(Math.random() * (3 + 1) + 1);
+            antall_ting = Math.floor(Math.random() * (3 + 1) + 0);
 
             document.getElementById("mld00").innerHTML = "Du klarte å rane: <b>Biltema</b>";
             if (antall_ting === 1) {
@@ -1403,6 +1635,18 @@ function endre(type) {
                 myNode.removeChild(myNode.lastChild);
               }
         document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Dine biler</h1><ul class='list-group overflow-auto'><li class='list-group-item d-flex justify-content-between align-items-center'>TV<span id='tv' class='badge bg-primary rounded-pill'></span></li><li class='list-group-item d-flex justify-content-between align-items-center'>Alarmsystem<span id='alarmsystem' class='badge bg-primary rounded-pill'></span></li><li class='list-group-item d-flex justify-content-between align-items-center'>Dress<span id='dress' class='badge bg-primary rounded-pill'></span></li><li class='list-group-item d-flex justify-content-between align-items-center'>Gitarsamling<span id='gitarsamling' class='badge bg-primary rounded-pill'></span> </li><li class='list-group-item d-flex justify-content-between align-items-center'>Laptop<span id='laptop' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>PC<span id='pc' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Radiostyrtbil<span id='radiostyrtbil' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>PS4<span id='ps4' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>PS5<span id='ps5' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Xbox One<span id='xboxone' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Xbox 360<span id='xbox360' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Gaming PC<span id='gamingpc' class='badge bg-primary rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Effektanlegg<span id='effektanlegg' class='badge bg-danger rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Stereoanlegg<span id='stereoanlegg' class='badge bg-danger rounded-pill'></span> </li><li class='list-group-item d-flex justify-content-between align-items-center'>Gressklipper<span id='gressklipper' class='badge bg-danger rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Turbo<span id='turbo' class='badge bg-danger rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Anlegg<span id='anlegg' class='badge bg-danger rounded-pill'></span> </li> <li class='list-group-item d-flex justify-content-between align-items-center'>Motorsag<span id='motorsag' class='badge bg-danger rounded-pill'></span> </li> </ul><button onclick='selg_ting()' class='btn btn-primary' type='button'>Selg ting</button> </div>"
+    } else if (type === "ran_biltema") {
+        var myNode = document.getElementById("info");
+        while (myNode.firstChild) {
+                myNode.removeChild(myNode.lastChild);
+              }
+        document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Ran Biltema</h1><br><p class='text-center' id='sjanse'></p><br><br><button onclick='utfør_biltema()'id='utfør_ran' type='button' class='btn btn-secondary w-50 align-self-center'>Utfør ran</button></div>"
+    } else if (type === "kjøp_narkotika") {
+        var myNode = document.getElementById("info");
+        while (myNode.firstChild) {
+                myNode.removeChild(myNode.lastChild);
+              }
+        document.getElementById("info").innerHTML = "<div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'><h1 class='text-center'>Hent varer fra Traphous</h1><p class='text-center'><b>Kjøp noe:</b></p><button onclick='kjøp(\"kokain\")' class='btn btn-primary w-50 align-self-center' type='button'>Kokain</button><br><button onclick='kjøp(\"hasj\")' class='btn btn-primary w-50 align-self-center' type='button'>Hasj</button><br><button onclick='kjøp(\"amfetamin\")' class='btn btn-primary w-50 align-self-center' type='button'>Amfetamin</button><br><button onclick='kjøp(\"benzo\")' class='btn btn-primary w-50 align-self-center' type='button'>Benzo</button><br><button onclick='kjøp(\"molly\")' class='btn btn-primary w-50 align-self-center' type='button'>Molly</button></div>"
     }
 }
 

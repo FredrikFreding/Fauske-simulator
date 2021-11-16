@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-<body onload="ran_biltema();load()" class="main-bg" scroll="no" style="overflow: hidden">
+<body class="main-bg" scroll="no" style="overflow: hidden">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#" onclick="endre('main');load()">Fauske Smiulator</a>
@@ -102,17 +102,17 @@
   </div>
     <div class="col d-flex justify-content-center align-content-center" id="info">
       <div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'>
-        <h1 class="text-center">Hent varer fra Traphous</h1>
-        <p class="text-center"><b>Kjøp noe:</b></p>
-        <button onclick='kjøp()' class='btn btn-primary w-50 align-self-center' type='button'>Kokain</button>
+        <h1 class="text-center">Selg på gaten</h1>
         <br>
-        <button onclick='kjøp()' class='btn btn-primary w-50 align-self-center' type='button'>Hasj</button>
+        <p class="text-center">Hvor vil du stå å selge?</p>
         <br>
-        <button onclick='kjøp()' class='btn btn-primary w-50 align-self-center' type='button'>Amfetamin</button>
+        <button onclick='selge("klubben")' class='btn btn-primary w-50 align-self-center' type='button'>Klubben</button>
         <br>
-        <button onclick='kjøp()' class='btn btn-primary w-50 align-self-center' type='button'>Benzo</button>
+        <button onclick='selge("amfi")' class='btn btn-primary w-50 align-self-center' type='button'>Amfi</button>
         <br>
-        <button onclick='kjøp()' class='btn btn-primary w-50 align-self-center' type='button'>Molly</button>
+        <button onclick='selge("rema")' class='btn btn-primary w-50 align-self-center' type='button'>Rema 1000</button>
+        <br>
+        <button onclick='selge("tunet")' class='btn btn-primary w-50 align-self-center' type='button'>Bydgetunet</button>
         </div>
       </div>
 </div>
