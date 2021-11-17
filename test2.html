@@ -8,12 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-<body onload="randomran()" class="main-bg" scroll="no" style="overflow: hidden">
+<body class="main-bg" scroll="no" style="overflow: hidden">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="../../../index.html">Fauske Smiulator</a>
+          <a class="navbar-brand" href="#" onclick="endre('main');load()">Fauske Smiulator</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -24,9 +24,8 @@
                   Ran noen på gata
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="ran-privatperson.html">Ran en privatperson</a></li>
-                  <li><a class="dropdown-item" href="ran-offentlig-person.html">Ran en offentlig person</a></li>
-                  <li><a class="dropdown-item" href="ran-tilfeldig-gata.html">Ran en tilfeldig på gata</a></li>
+                  <li id="ran_priv"><a class="dropdown-item" href="#" onclick="endre('ran_privat');randomran();cooldown()">Ran en privatperson</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="endre('offentlig_ran');offentlig_ran();cooldown()">Ran en offentlig person</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -34,9 +33,8 @@
                   Stjel en bil
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="../Stjel bil/stjel-bil-privatperson.html">Stjel fra en privatperson</a></li>
-                  <li><a class="dropdown-item" href="../Stjel bil/stjel-bil-offentlig-person.html">Stjel fra en offentlig person</a></li>
-                  <li><a class="dropdown-item" href="../Stjel bil/stjel-tilfeldig-gata.html">Stjel en tilfeldig på gata</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="endre('tilfeldig_bil');randombil();cooldown_bil()">Stjel en tilfeldig på gata</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="endre('offentlig_bil');randombil0();cooldown_bil()">Stjel fra en offentlig person</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -44,10 +42,10 @@
                   Stjel fra et hus
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="../Ran hus/stjel-hus-privat.html">Stjel fra et privat hus</a></li>
-                  <li><a class="dropdown-item" href="../Ran hus/stjel-hus-offentlig.html">Stjel fra en offentlig byggning</a></li>
-                  <li><a class="dropdown-item" href="../Ran hus/stjel-hus-gata.html">Stjel noe på gata</a></li>
-                  <li><a class="dropdown-item" href="../Ran hus/stjel-hus-butikk.html">Stjel noe på fra en butikk</a></li>
+                  <li><a class="dropdown-item" href="/HTML/handlinger/Ran hus/stjel-hus-privat.html">Stjel fra et privat hus</a></li>
+                  <li><a class="dropdown-item" href="/HTML/handlinger/Ran hus/stjel-hus-offentlig.html">Stjel fra en offentlig byggning</a></li>
+                  <li><a class="dropdown-item" href="/HTML/handlinger/Ran hus/stjel-hus-gata.html">Stjel noe på gata</a></li>
+                  <li><a class="dropdown-item" href="/HTML/handlinger/Ran hus/stjel-hus-butikk.html">Stjel noe på fra en butikk</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -55,10 +53,10 @@
                   Narkotika
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="../Narkotika/narkotika-traphouse.html">Hent varer fra TrapHouse</a></li>
-                  <li><a class="dropdown-item" href="../Narkotika/narkotika-miks.html">Miks rusmidlene dine</a></li>
-                  <li><a class="dropdown-item" href="../Narkotika/narkotika-ansett.html">Ansette dealere</a></li>
-                  <li><a class="dropdown-item" href="../Narkotika/narkotika-selg-gata.html">Selg på gaten</a></li>
+                  <li><a class="dropdown-item" href="/HTML/handlinger/Narkotika/narkotika-traphouse.html">Hent varer fra TrapHouse</a></li>
+                  <li><a class="dropdown-item" href="/HTML/handlinger/Narkotika/narkotika-miks.html">Miks rusmidlene dine</a></li>
+                  <li><a class="dropdown-item" href="/HTML/handlinger/Narkotika/narkotika-ansett.html">Ansette dealere</a></li>
+                  <li><a class="dropdown-item" href="/HTML/handlinger/Narkotika/narkotika-selg-gata.html">Selg på gaten</a></li>
                 </ul>
               </li>
             </ul>
@@ -81,20 +79,20 @@
       </nav>
       <div id="div-innpakning" class="d-flex flex-row">
         <div class="">
-    <div class="col-3 border-info border-3 border-top side-navbar active-nav d-flex justify-content-between flex-wrap flex-column navbar-dark bg-dark" id="sidebar">
+    <div class="col-3 side-navbar active-nav d-flex justify-content-between flex-wrap flex-column navbar-dark bg-dark" id="sidebar">
         <ul class="nav flex-column text-white w-100">
         <a href="#" class="nav-link h3 align-self-center text-white my-2">
             Lager
         </a>
         <li>
-            <li class="nav-link h6 text-white my-2"><i class="fas fa-coins fa-fw"></i> Penger: </li>
+            <li id="pengsjit" class="nav-link h6 text-white my-2"><i class="fas fa-coins fa-fw"></i> Penger: </li>
         </li>
         <li><hr class="dropdown-divider"></li>
-        <li>
-            <li class="nav-link h6 text-white my-2"><i class="fas fa-car fa-fw"></i> Biler </li>
+        <li >
+            <li onclick="endre('selg_biler');dinebiler()" class="nav-link h6 text-white my-2"><i class="fas fa-car fa-fw"></i> Biler </li>
         </li>
         <li>
-            <li class="nav-link h6 text-white my-2"><i class="fas fa-box-open fa-fw"></i> Ting </li>
+            <li onclick="endre('selg_ting');dineting()" class="nav-link h6 text-white my-2"><i class="fas fa-box-open fa-fw"></i> Ting </li>
         </li>
         <li>
             <li class="nav-link h6 text-white my-2"><i class="fas fa-pills fa-fw"></i> Narkotika </li>
@@ -104,21 +102,24 @@
   </div>
     <div class="col d-flex justify-content-center align-content-center" id="info">
       <div id='info01' class='border border-3 w-50 h-50 d-flex align-content-center shadow-lg p-3 mb-5 bg-body rounded flex-column'>
-        <h1 class='text-center' id="sted"></h1>
+        <h1 class="text-center"></h1>
         <br>
-        <p class='text-center' id="vente"></p>
+        <p class="text-center" id="person"></p>
         <br>
-        <p class='text-center' id="politinivå"></p>
+        <p class="text-center" id="aktivitet"></p>
+        <br>
+        <p class="text-center">Hva vil du gjøre?</p>
+        <br>
+        <button onclick='kjøp_molly()' id='molly' type='button' class='btn btn-secondary w-50 align-self-center'>Spørr personen om h*n vil kjøpe noe</button>
+        <br>
+        <button onclick='kjøp_molly()' id='molly' type='button' class='btn btn-secondary w-50 align-self-center'>Prøv å få oppmerksomheten til personen</button>
+        <br>
+        <button onclick='kjøp_molly()' id='molly' type='button' class='btn btn-secondary w-50 align-self-center'>La h*n gå vekk, da mister du en potensiell kunde</button>
+        </div>
       </div>
-      </div>
-    </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-<script src="../../../js/navbar.js"></script>
-<script src="../../../js/sidebar.js"></script>
 <script src="/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
-<p id="lagre"></p>
-<p id="lagre01"></p>
 </html>

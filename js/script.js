@@ -20,6 +20,7 @@ var hus_cd = 0;
 var antall_tinga = 0;
 var tinga_verdig = 0;
 var antall_ting = 0;
+var politinivå = 1;
 // Variabler
 
 // Narkotika
@@ -272,6 +273,11 @@ tullebukk = kjøp_kokain.length;
 // Funksjoner
 function selge(type) {
     if (type === "klubben") {
+        document.getElementById("info01").innerHTML = "<h1 class='text-center' id='sted'></h1><br><p class='text-center' id='vente'></p><br><p class='text-center' id='politinivå'></p>"
+        document.getElementById("sted").innerHTML = "Du står med klubben."
+        setTimeout(() => {
+            document.getElementById("info01").innerHTML = ""
+          }, Math.floor(Math.random()*(30000-10000+1)+10000));
         console.log("klubben")
     } else if (type === "amfi") {
         console.log("amfi")
